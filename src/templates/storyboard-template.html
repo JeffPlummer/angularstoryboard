@@ -1,0 +1,42 @@
+<div ng-controller="storyboardCtrl" ng-init="initializeStoryboard()">
+    <!-- Timeline Slider -->
+    <div ng-controller="sliderCtrl" ng-init="initializeSlider()">
+        <div  style="width: 100%; padding-bottom: 4px;" >
+        <jqrange-slider id="jqSlider" options="timelineSliderOptions"></jqrange-slider>
+        </div>
+    </div>
+
+    <!-- story lines -->
+    <div ng-controller="gridCtrl" ng-init="initializeStorylines()" style="background-color: green; position: relative;">
+
+        <!-- Lines -->
+        <div>
+            <table class="storyboard_table" ng-repeat="storyline in data.storylines">
+                <tr class="storyboard_tr">
+                    <th class="storyboard_th">{{storyline.name}}</th>
+                </tr>
+                <tr class="storyboard_tr" ng-repeat="row in createArray(storyline.overlapDepth)" >
+                </tr>
+            </table>
+        </div>
+
+        <!-- Grid -->
+        <div id="storyboardGridContainer" style="width: 100%; overflow-x: auto; position: absolute; top:0px; left: 0px; ">
+            <div id="storyboardGrid" gridster="gridsterOpts" ng-style="{width: gridWidth}">
+                <ul>
+                    <li  gridster-item="item" ng-repeat="item in gridEvents">
+                        <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">
+                            <div ng-include="storyboardItemTemplate"></div>
+                        </div>
+                        <div ng-if="!showGridEventInView(item)">
+                            <div ng-include="smallStoryboardItemTemplate"></div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
