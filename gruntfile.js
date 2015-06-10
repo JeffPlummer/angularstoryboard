@@ -49,10 +49,24 @@ module.exports = function(grunt) {
         },
         copy: {  //Copy CSS
             main: {
-                src: 'src/css/*',
-                dest: 'dist/css/',
-                flatten: true,
-                expand:true
+                files: [
+                    // includes files within path
+                    {expand: true, flatten: true, src: ['src/css/*'], dest: 'dist/css/', filter: 'isFile'},
+
+                    // includes files within path and its sub-directories
+                    {expand: true, flatten: true, src: ['img/*'], dest: 'dist/img/', filter: 'isFile'}//,
+
+                    // makes all src relative to cwd
+                    //{expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
+                    //
+                    //// flattens results to a single level
+                    //{expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'},
+                ]
+
+                //src: 'src/css/*',
+                //dest: 'dist/css/',
+                //flatten: true,
+                //expand:true
             }
         },
         uglify: {

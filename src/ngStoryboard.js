@@ -5,42 +5,37 @@ storyboardModule.directive('storyboard', function() {
 
     return {
         restrict: 'E',
-        require: ['storyboardEvents', 'storyboardEventTemplate'],
-
+        require: ['options'],
         scope: {
-            storyboardEvents: '=',
-            storyboardEventTemplate: '=',
-            smallStoryboardEventTemplate: '='
+            options: '='
         },
         templateUrl: 'storyboard-template.html',
         controller: ['$scope', function($scope) {
-
             $scope.storyboardData = {};
-
         }],
         link: function(scope, iElement, iAttrs, ctrl) {
-            scope.$watch('iAttrs.storyboardEvents', function() {
-
+            scope.$watch('iAttrs.options.storyboardEvents', function() {
+                //scope.storyboardEvents = iAttrs.options.storyboardEvents;
             });
-            scope.$watch('iAttrs.storyboardEventTemplate', function() {
-                scope.storyboardItemTemplate = iAttrs.storyboardEventTemplate;
+            scope.$watch('iAttrs.options.storyboardEventTemplate', function() {
+               // scope.storyboardItemTemplate = iAttrs.options.storyboardEventTemplate;
             });
-            scope.$watch('iAttrs.smallStoryboardEventTemplate', function() {
-                scope.smallStoryboardItemTemplate = iAttrs.smallStoryboardEventTemplate;
+            scope.$watch('iAttrs.options.smallStoryboardEventTemplate', function() {
+                //scope.smallStoryboardItemTemplate = iAttrs.options.smallStoryboardEventTemplate;
             });
 
         }
     }
 });
 
-storyboardModule.directive('storyboardEvents', function() {
+storyboardModule.directive('options', function() {
     return {
         controller: function($scope) {}
     }
 });
-
-storyboardModule.directive('storyboardEventTemplate', function() {
-    return {
-        controller: function($scope) {}
-    }
-});
+//
+//storyboardModule.directive('storyboardEventTemplate', function() {
+//    return {
+//        controller: function($scope) {}
+//    }
+//});

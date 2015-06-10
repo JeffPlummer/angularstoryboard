@@ -10,7 +10,7 @@
     <script type="application/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
     <script type="application/javascript" src="../bower_components/jquery-ui/jquery-ui.js"></script>
     <script type="application/javascript" src="../bower_components/angular/angular.min.js"></script>
-    <script type="application/javascript" src="../bower_components/angular-gridster/dist/angular-gridster.min.js"></script>
+    <script type="application/javascript" src="../bower_components/angular-gridster/src/angular-gridster.js"></script>
     <script type="application/javascript" src="../bower_components/jqrange-slider/dest/jQAllRangeSliders.js"></script>
     <script type="application/javascript" src="../bower_components/angular-jqrange-slider/src/angular-jqrange-slider.js"></script>
     <script type="application/javascript" src="../bower_components/angular-scroll/angular-scroll.js"></script>
@@ -25,16 +25,14 @@
 </head>
 <body ng-app="example" >
 <div ng-controller="exampleCtrl">
-    <storyboard storyboard-events="exampleEvents"
-                storyboard-event-template="myTemplate.html"
-                small-storyboard-event-template="mySmallTemplate.html"></storyboard>
+    <storyboard options="myOptions"></storyboard>
 </div>
 
 
 <script type="text/ng-template" id="myTemplate.html">
     <div class="eventStoryBoardItemHeader">
         <div> {{item.event.title}} </div>
-        <div class="eventStoryboardHeaderDate">{{formatDate(item.startDate)}} - {{formatDate(item.endDate)}} ({{item.event.storyline}}) </div>
+        <div class="eventStoryboardHeaderDate">{{formatDate(item.event.startDate)}} - {{formatDate(item.event.endDate)}} ({{item.event.storyline}}) </div>
         <button class="btn btn-primary btn-xs exploreEventStoryboardItemButton"
             ng-click="explore(item.event)">Explore
         </button>

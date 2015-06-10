@@ -102,7 +102,8 @@
 }
 
 .storyboard_tr {
-    height: 185px;
+    height: 180px;
+    background: url('../img/additembg.png') no-repeat 0 50%;
 }
 
 th {

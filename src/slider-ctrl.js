@@ -25,8 +25,8 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
 
 
     var createTimelineSliderData = function() {
-        $scope.timelineSliderOptions.jqOptions.bounds.min = $scope.storyboardData.minDate;
-        $scope.timelineSliderOptions.jqOptions.bounds.max = $scope.storyboardData.maxDate;
+        console.log("createTimelineSliderData")
+        $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange.min = $scope.storyboardData.minViewDate;
         $scope.timelineSliderOptions.selectedRange.max = $scope.storyboardData.maxViewDate;
     };
@@ -64,4 +64,6 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
     var debounceUpdateFromScroll = _.debounce(updateFromScroll, 2);
     $scope.$watch('storyboardData.minViewDate', debounceUpdateFromScroll);
     $scope.$watch('storyboardData.maxViewDate', debounceUpdateFromScroll);
+
+    $scope.$watch('storyboardData.minDate',createTimelineSliderData);
 });

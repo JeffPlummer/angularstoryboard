@@ -7,29 +7,32 @@
     </div>
 
     <!-- story lines -->
-    <div ng-controller="gridCtrl" ng-init="initializeStorylines()" style="background-color: green; position: relative;">
+    <div ng-controller="gridCtrl" ng-init="initializeStorylines()" style="position: relative;">
 
         <!-- Lines -->
         <div>
-            <table class="storyboard_table" ng-repeat="storyline in data.storylines">
+            <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
                 <tr class="storyboard_tr">
-                    <th class="storyboard_th">{{storyline.name}}</th>
-                </tr>
-                <tr class="storyboard_tr" ng-repeat="row in createArray(storyline.overlapDepth)" >
+                    <th class="storyboard_th">
+                        <button class="btn btn-default" type="submit">Button</button>
+                            <!--<button class="btn btn-primary btn-xs" type="submit" >-->
+                                <!--{{storyline}}-->
+                            <!--</button>-->
+                    </th>
                 </tr>
             </table>
         </div>
 
         <!-- Grid -->
         <div id="storyboardGridContainer" style="width: 100%; overflow-x: auto; position: absolute; top:0px; left: 0px; ">
-            <div id="storyboardGrid" gridster="gridsterOpts" ng-style="{width: gridWidth}">
+            <div id="storyboardGrid" gridster="gridsterOpts" ng-style="{width: gridWidth}" ng-dblClick="doubleClick($event)">
                 <ul>
-                    <li  gridster-item="item" ng-repeat="item in gridEvents">
+                    <li  gridster-item="item" ng-repeat="item in storyboardData.gridEvents">
                         <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">
-                            <div ng-include="storyboardItemTemplate"></div>
+                            <div ng-include="options.storyboardItemTemplate"></div>
                         </div>
                         <div ng-if="!showGridEventInView(item)">
-                            <div ng-include="smallStoryboardItemTemplate"></div>
+                            <div ng-include="options.smallStoryboardItemTemplate"></div>
                         </div>
 
                     </li>

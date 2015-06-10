@@ -1,16 +1,12 @@
 angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
 
     $scope.gridWidth = 0;
-    $scope.gridCellHeight = 180;
-    $scope.data = {
-        storylines: []
-    };
-
-    $scope.gridEvents = [];
+    $scope.renameStorylines = false;
 
     $scope.initializeStorylines = function() {
         createStoryboardStorylines();
         initializeEventGrid();
+        updateGridBounds();
     };
 
     //Storylines
@@ -19,11 +15,12 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     };
 
     var createStoryboardStorylines = function() {
+        $scope.storyboardData.storylines = [];
         var storylinesHashObject = {};
 
         //Create storylines hash object
-        for(var i=0; i<$scope.storyboardEvents.length; i++) {
-            var event = $scope.storyboardEvents[i];
+        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
+            var event = $scope.options.storyboardEvents[i];
             var storylineName = (event.storyline)?event.storyline : "_undefined";
 
             //If no hash entry exists for storyline, create one
@@ -39,8 +36,12 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         //Crate array from hash object
         for (var prop in storylinesHashObject) {
-            $scope.data.storylines.push({name: prop, overlapDepth: storylinesHashObject[prop].overlapDepth,
-            events: storylinesHashObject[prop].events})
+            if(prop != "_undefined") { //Do undefined last
+                $scope.storyboardData.storylines.push(prop);
+            }
+        }
+        if(storylinesHashObject._undefined) {
+            $scope.storyboardData.storylines.push("_undefined");
         }
     };
 
@@ -97,23 +98,44 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     };
 
     var onElementResized = function(changedElement) {
-
+        changedElement.event.endDate = calcDateFromColumn(changedElement.col+changedElement.sizeX);
     };
 
     var onElementMoved = function(changedElement) {
+        var numHours = changedElement.event.endDate.differenceInHours(changedElement.event.startDate);
+
         var newRow = changedElement.row;
         var newCol = changedElement.col;
 
         //Adjust event storyline
-        changedElement.event.storyline = $scope.data.storylines[newRow].name;
+        changedElement.event.storyline = $scope.storyboardData.storylines[newRow];
 
         //Adjust startDate / EndDate
+        changedElement.event.startDate = calcDateFromColumn(newCol);
+        changedElement.event.endDate = calcDateFromColumn(newCol+changedElement.sizeX);
 
+        //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
+        if(eventAffectsMinMaxDates(changedElement)) {
+            $scope.$emit('recalculateStoryboard');
+            $scope.initializeStorylines();
+        }
+    };
+
+    var eventAffectsMinMaxDates = function(item) {
+        var affects = false;
+        if( ($scope.options.extendBeyondInHours) && ($scope.options.extendBeyondInHours > 0) ) {
+            if ( ($scope.options.gridSizeInHours*item.col < $scope.options.extendBeyondInHours) ||
+                ( ($scope.gridsterOpts.columns - item.col) < $scope.options.extendBeyondInHours) ) {
+                affects = true;
+            }
+        }
+
+        return affects;
     };
 
     var createGridDimensions = function() {
         //Columns should be 1 for every 4 hours.
-        var numBlocks = Math.floor($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate ) / 4);
+        var numBlocks = Math.floor($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate ) / $scope.options.gridSizeInHours);
         $scope.gridsterOpts.columns = numBlocks;
 
         //Set column width based on view width
@@ -127,53 +149,59 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     };
 
     var createGridEventObjects = function() {
-        var len = $scope.data.storylines.length;
-        var rowsPlusOverlap = 0;
-        for (var i = 0; i < len; i++) {
-            var events = $scope.data.storylines[i].events;
-            for(var j=0; j<events.length; j++) {
-                var obj = {};
-                obj.event = events[j];
-                obj.sizeX = calcNumColumnsBetweenStartAndEnd(obj.event.startDate, obj.event.endDate);
-                obj.sizeY = 1;
-                obj.dragEnabled = false;
-                obj.row = rowsPlusOverlap;
-                obj.col = calcStartColumn(obj.event.startDate);
-                $scope.gridEvents.push(obj);
-
-                console.log(obj);
-            }
-            rowsPlusOverlap += $scope.data.storylines[i].overlapDepth +1;
+        $scope.storyboardData.gridEvents = [];
+        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
+            addGridItemForEvent($scope.options.storyboardEvents[i]);
         }
-        $scope.gridsterOpts.maxRows = rowsPlusOverlap;
+    };
+
+    var addGridItemForEvent = function(event) {
+        var obj = {};
+        obj.event = event;
+        obj.sizeX = calcNumColumnsBetweenStartAndEnd(obj.event.startDate, obj.event.endDate);
+        obj.sizeY = 1;
+        obj.dragEnabled = false;
+        obj.row = (event.storyline)?$scope.storyboardData.storylines.indexOf(event.storyline):$scope.storyboardData.storylines.indexOf("_undefined");
+        obj.col = calcStartColumn(obj.event.startDate);
+        $scope.storyboardData.gridEvents.push(obj);
     };
 
     var calcNumColumnsBetweenStartAndEnd = function(startDate, endDate) {
-        return Math.floor(endDate.differenceInHours(startDate) / 4);
+        return Math.floor(endDate.differenceInHours(startDate) / $scope.options.gridSizeInHours);
     };
 
     var calcStartColumn = function(startdate) {
-        return Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)) / 4);
+        return Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)) / $scope.options.gridSizeInHours);
     };
 
+    var calcDateFromColumn = function(column) {
+        var d = new Date();
+        d.setTime($scope.storyboardData.minDate.getTime());
+        d.addHours($scope.options.gridSizeInHours*column);
+        return d;
+    };
+
+    var updateGridBounds = function() {
+        //Update column width based on view
+        var viewHours = $scope.storyboardData.maxViewDate.differenceInHours($scope.storyboardData.minViewDate);
+        var elementWidth = document.getElementById('storyboardGridContainer').clientWidth;
+        var colWidth = elementWidth/Math.floor(viewHours/$scope.options.gridSizeInHours);
+        $scope.gridsterOpts.colWidth = colWidth;
+
+        //Update scroll position
+        $scope.gridWidth = $scope.gridsterOpts.columns * $scope.gridsterOpts.colWidth;
+        var totalHours = $scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate);
+        var viewStart = $scope.storyboardData.minViewDate.differenceInHours($scope.storyboardData.minDate);
+
+        var gridElement = angular.element(document.getElementById('storyboardGridContainer'));
+        var xScroll = (viewStart / totalHours)*$scope.gridWidth;
+
+        gridElement.scrollLeft(xScroll);
+    }
     var viewBoundsChanged = function() {
         //TODO: Only update if it wasn't a grid scroll
         if($scope.sliderMouseDown) {
-            //Update column width based on view
-            var viewHours = $scope.storyboardData.maxViewDate.differenceInHours($scope.storyboardData.minViewDate);
-            var elementWidth = document.getElementById('storyboardGridContainer').clientWidth;
-            var colWidth = elementWidth/Math.floor(viewHours/4);
-            $scope.gridsterOpts.colWidth = colWidth;
-
-            //Update scroll position
-            $scope.gridWidth = $scope.gridsterOpts.columns * $scope.gridsterOpts.colWidth;
-            var totalHours = $scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate);
-            var viewStart = $scope.storyboardData.minViewDate.differenceInHours($scope.storyboardData.minDate);
-
-            var gridElement = angular.element(document.getElementById('storyboardGridContainer'));
-            var xScroll = (viewStart / totalHours)*$scope.gridWidth;
-
-            gridElement.scrollLeft(xScroll);
+            updateGridBounds();
         }
     };
     var throttledViewBoundsChanged = _.throttle(viewBoundsChanged, 5);
@@ -227,6 +255,28 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     var debounceHandleScroll = _.debounce(handleScroll, 1);
 
 
+    $scope.doubleClick = function(clickevent) {
+        var grid = document.getElementById('storyboardGrid');
+        var row = Math.floor(clickevent.offsetY / 180);
+        var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
+
+        //Create new event
+        var newEvent = {
+            startDate: calcDateFromColumn(col),
+            endDate: calcDateFromColumn(col+1),
+            title: "new event",
+            storyline: $scope.storyboardData.storylines[row]
+        };
+
+
+        //Add to list of events
+        $scope.options.storyboardEvents.push(newEvent);
+
+        //Add storyboard item for event
+        addGridItemForEvent(newEvent, row);
+
+        console.log(clickevent);
+    };
 
 
 });

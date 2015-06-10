@@ -4,7 +4,9 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         minDate: null,
         maxDate: null,
         minViewDate: null,
-        maxViewDate: null
+        maxViewDate: null,
+        storylines : [],
+        gridEvents:[]
     };
 
     $scope.initializeStoryboard = function() {
@@ -12,18 +14,18 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     };
 
     var initMinMaxDates = function() {
-        var len = $scope.storyboardEvents.length;
+        var len = $scope.options.storyboardEvents.length;
         for (var i = 0; i < len; i++) {
             if(i==0) {
-                $scope.storyboardData.minDate = new Date($scope.storyboardEvents[i].startDate);
-                $scope.storyboardData.maxDate = new Date($scope.storyboardEvents[i].startDate);
+                $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
+                $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].startDate);
             }
 
-            if(new Date($scope.storyboardEvents[i].startDate) < $scope.storyboardData.minDate) {
-                $scope.storyboardData.minDate = new Date($scope.storyboardEvents[i].startDate);
+            if(new Date($scope.options.storyboardEvents[i].startDate) < $scope.storyboardData.minDate) {
+                $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
             }
-            if(new Date($scope.storyboardEvents[i].endDate) > $scope.storyboardData.maxDate) {
-                $scope.storyboardData.maxDate = new Date($scope.storyboardEvents[i].endDate);
+            if(new Date($scope.options.storyboardEvents[i].endDate) > $scope.storyboardData.maxDate) {
+                $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].endDate);
             }
         }
 
@@ -50,6 +52,8 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     angSlider.bind("stop", function(evt, data) {
         $scope.sliderMouseDown = false;
     });
+
+    $scope.$on('recalculateStoryboard', initMinMaxDates);
 
 
 });

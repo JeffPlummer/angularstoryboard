@@ -1,3 +1,10 @@
 bower_components
 node_modules
 src/templates/*.js
+dist/
+
+dist/angular-storyboard.js
+
+dist/angular-storyboard.js
+
+dist/angular-storyboard.min.js
