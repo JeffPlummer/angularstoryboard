@@ -20,6 +20,7 @@
     "img",
     "lib",
     "node_modules",
+    ".idea",
     ".bowerrc",
     ".gitignore",
     ".jshintignore",
