@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             },
             main: {
                 src: ['src/templates/*.html'],
-                dest: 'dist/templates.js'
+                dest: 'temp/templates/templates.js'
             },
         },
         concat: {
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: ['src/ngStoryboard.js', 'src/storyboard-ctrl.js', 'src/slider-ctrl.js',
-                     'src/grid-ctrl.js', 'dist/templates/*.js', 'src/date-extensions.js'],
+                     'src/grid-ctrl.js', 'temp/templates/*.js', 'src/date-extensions.js'],
                 dest: 'dist/<%= pkg.name %>.js'
             },
         },
