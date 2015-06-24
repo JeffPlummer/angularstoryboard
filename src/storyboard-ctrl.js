@@ -13,6 +13,8 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         initMinMaxDates();
     };
 
+
+
     var initMinMaxDates = function() {
         var len = $scope.options.storyboardEvents.length;
         for (var i = 0; i < len; i++) {
@@ -54,6 +56,11 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     });
 
     $scope.$on('recalculateStoryboard', initMinMaxDates);
+
+
+
+
+
 
 
 });

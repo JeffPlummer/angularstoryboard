@@ -1,5 +1,5 @@
 .eventStoryboardItem {
-    height: 180px;
+    height: 140px;
     overflow-y: hidden;
 }
 
@@ -23,50 +23,14 @@
     float: left;
 }
 .eventStoryboardHeaderDate {
-  font-size: xx-small;
-    float: right;
-}
-
-.exploreEventStoryboardItemButton {
-    float: right;
-}
-
-.eventStoryboardItemTextContainerWithoutImage {
-    width: 100%;
-    height: 100%;
-}
-
-.eventStoryboardItemTextContainerWithImage {
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-
-.eventStoryboardItemImage {
-    width: 50%;
-    max-height: 120px;
+    font-size: xx-small;
     float: right;
 }
 
 .storyboardItemDesc {
     height: 93px;
     overflow: hidden;
-}
-
-.storylineRow {
-    width: 100%;
-    border-top-style: dotted;
-    border-top-width: 1px;
-}
-
-.storyboard_table {
-    width: 100%;
-    z-index: 10;
-    cellspacing: 0px;
-    cellpadding: 0px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    vertical-align: top;
+    width:100%;
 }
 
 
@@ -99,13 +63,4 @@
     z-index: 1;
     bottom: -15px;
     left: 15px;
-}
-
-.storyboard_tr {
-    height: 180px;
-    background: url('../img/additembg.png') no-repeat 0 50%;
-}
-
-th {
-    vertical-align: top;
 }

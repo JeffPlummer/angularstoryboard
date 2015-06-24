@@ -3,9 +3,11 @@
     <meta charset="UTF-8">
     <title></title>
 
-    <link rel="stylesheet" href="../dist/css/angular-storyboard.css"/>
     <link rel="stylesheet" href="../bower_components/angular-gridster/dist/angular-gridster.min.css"/>
     <link rel="stylesheet" href="../bower_components/jqrange-slider/dest/css/iThing.css" type="text/css" />
+    <link rel="stylesheet" href="../bower_components/angular-xeditable/dist/css/xeditable.css" type="text/css" />
+    <link rel="stylesheet" href="../dist/css/angular-storyboard.css"/>
+    <link rel="stylesheet" href="example.css"/>
 
     <script type="application/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
     <script type="application/javascript" src="../bower_components/jquery-ui/jquery-ui.js"></script>
@@ -16,9 +18,9 @@
     <script type="application/javascript" src="../bower_components/angular-scroll/angular-scroll.js"></script>
     <script type="application/javascript" src="../bower_components/moment/moment.js"></script>
     <script type="application/javascript" src="../bower_components/underscore/underscore.js"></script>
+    <script type="application/javascript" src="../bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 
     <script type="application/javascript" src="../dist/angular-storyboard.js"></script>
-
     <script type="application/javascript" src="app.js"></script>
     <script type="application/javascript" src="example-ctrl.js"></script>
 
@@ -33,15 +35,19 @@
     <div class="eventStoryBoardItemHeader">
         <div> {{item.event.title}} </div>
         <div class="eventStoryboardHeaderDate">{{formatDate(item.event.startDate)}} - {{formatDate(item.event.endDate)}} ({{item.event.storyline}}) </div>
-        <button class="btn btn-primary btn-xs exploreEventStoryboardItemButton"
-            ng-click="explore(item.event)">Explore
-        </button>
+        <!--<button class="btn btn-primary btn-xs exploreEventStoryboardItemButton"-->
+            <!--ng-click="explore(item.event)">Explore-->
+        <!--</button>-->
+    </div>
+    <div class="storyboardItemDesc">
+        {{item.event.text}}
     </div>
 </script>
 
 <script type="text/ng-template" id="mySmallTemplate.html">
         <div> {{item.event.title}} </div>
 </script>
+
 
 
 </body>

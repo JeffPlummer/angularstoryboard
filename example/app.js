@@ -1,1 +1,1 @@
-var app = angular.module('example', ['storyboard']);
+var app = angular.module('example', ['storyboard', 'xeditable']);

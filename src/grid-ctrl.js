@@ -274,10 +274,34 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         //Add storyboard item for event
         addGridItemForEvent(newEvent, row);
-
-        console.log(clickevent);
     };
 
+    $scope.updateStorylineName = function(oldStorylineName, newStorylineName) {
+        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
+            var event = $scope.options.storyboardEvents[i];
+
+            if(event.storyline == oldStorylineName) {
+                event.storyline = newStorylineName;
+            }
+        }
+
+        $scope.$emit("storylineChanged", oldStorylineName, newStorylineName);
+
+        return true;
+    };
+
+
+
+
+    var onInputStoryboardEventsChanged = function(oldValue, newValue) {
+        if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
+            console("Different")
+        }
+        else {
+            console.log("Same");
+        }
+    };
+    $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
 
 });
 
