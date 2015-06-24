@@ -1,0 +1,46 @@
+
+
+.storylineRow {
+    width: 100%;
+    border-top-style: dotted;
+    border-top-width: 1px;
+}
+
+.storyboard_table_container {
+    background: url('../img/additembg.png') no-repeat 50% 20px;
+    z-index: 10;
+}
+
+.storyboard_table {
+    width: 100%;
+    z-index: 10;
+    cellspacing: 0px;
+    cellpadding: 0px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    vertical-align: top;
+
+
+}
+
+
+
+.storyboard_tr {
+    height: 180px;
+
+}
+
+th {
+    vertical-align: top;
+}
+
+
+
+a.editable-click {
+    color: green;
+    border-bottom: none 2px green;
+}
+a.editable-click:hover {
+    color: #47a447;
+    /*border-bottom-color: #47a447;*/
+}
