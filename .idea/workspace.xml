@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9f3bb4a-9840-490d-9c99-66e91a9390e8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-cookies/angular-cookies.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-gridster/angular-gridster.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-gridster/angular-gridster.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-resource/angular-resource.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-route/angular-route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-scroll/angular-scroll.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-xeditable/xeditable.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular-xeditable/xeditable.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/angular/angular.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/bootstrap.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/bootstrap/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/javascript-detect-element-resize/detect-element-resize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jqrange-slider/jQRangeSlider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jquery-ui/jquery-ui.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jquery/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/moment/moment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/underscore/underscore.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/Rename.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/additembg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/angular-storyboard.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/angular-storyboard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/angular-storyboard.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/templates.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -51,7 +36,27 @@
         <entry file="file://$PROJECT_DIR$/bower.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0779896">
-              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.4">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gruntfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -192,11 +197,9 @@
         <option value="$PROJECT_DIR$/bower_components/jqrange-slider/dest/jQAllRangeSliders-withRuler.js" />
         <option value="$PROJECT_DIR$/bower_components/jqrange-slider/dest/jQAllRangeSliders.js" />
         <option value="$PROJECT_DIR$/bower_components/angular-jqrange-slider/src/angular-jqrange-slider.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/ngStoryboard.js" />
         <option value="$PROJECT_DIR$/src/slider-ctrl.js" />
         <option value="$PROJECT_DIR$/bower_components/angular-gridster/src/angular-gridster.js" />
-        <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/dist/css/angular-storyboard.css" />
         <option value="$PROJECT_DIR$/example/app.js" />
         <option value="$PROJECT_DIR$/src/css/angular-storyboard.css" />
@@ -206,6 +209,8 @@
         <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/example/example.html" />
         <option value="$PROJECT_DIR$/example/example.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/bower.json" />
       </list>
     </option>
@@ -284,6 +289,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="angularstoryboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularstoryboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularstoryboard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,14 +452,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/date-extensions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -707,24 +718,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/slider-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="129" selection-start-line="28" selection-start-column="129" selection-end-line="28" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/css/angular-storyboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -760,13 +757,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -824,10 +814,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.4">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/Rename.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0779896">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
           <folding />
         </state>
       </provider>
