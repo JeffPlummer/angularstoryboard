@@ -195,6 +195,8 @@ storyboardModule.directive('options', function() {
         //Create storylines hash object
         for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
             var event = $scope.options.storyboardEvents[i];
+            event.startDate = new Date(event.startDate);
+            event.endDate = new Date(event.endDate);
             var storylineName = (event.storyline)?event.storyline : "_undefined";
 
             //If no hash entry exists for storyline, create one
