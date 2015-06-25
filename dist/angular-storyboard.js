@@ -197,7 +197,7 @@ storyboardModule.directive('options', function() {
             var event = $scope.options.storyboardEvents[i];
             event.startDate = new Date(event.startDate);
             event.endDate = new Date(event.endDate);
-            var storylineName = (event.storyline)?event.storyline : "_undefined";
+            var storylineName = (event.storylineName)?event.storylineName : "_undefined";
 
             //If no hash entry exists for storyline, create one
             if(!storylinesHashObject.hasOwnProperty(storylineName)) {
@@ -284,7 +284,7 @@ storyboardModule.directive('options', function() {
         var newCol = changedElement.col;
 
         //Adjust event storyline
-        changedElement.event.storyline = $scope.storyboardData.storylines[newRow];
+        changedElement.event.storylineName = $scope.storyboardData.storylines[newRow];
 
         //Adjust startDate / EndDate
         changedElement.event.startDate = calcDateFromColumn(newCol);
@@ -337,7 +337,7 @@ storyboardModule.directive('options', function() {
         obj.sizeX = calcNumColumnsBetweenStartAndEnd(obj.event.startDate, obj.event.endDate);
         obj.sizeY = 1;
         obj.dragEnabled = false;
-        obj.row = (event.storyline)?$scope.storyboardData.storylines.indexOf(event.storyline):$scope.storyboardData.storylines.indexOf("_undefined");
+        obj.row = (event.storylineName)?$scope.storyboardData.storylines.indexOf(event.storylineName):$scope.storyboardData.storylines.indexOf("_undefined");
         obj.col = calcStartColumn(obj.event.startDate);
         $scope.storyboardData.gridEvents.push(obj);
     };
@@ -441,7 +441,7 @@ storyboardModule.directive('options', function() {
             startDate: calcDateFromColumn(col),
             endDate: calcDateFromColumn(col+1),
             title: "new event",
-            storyline: $scope.storyboardData.storylines[row]
+            storylineName: $scope.storyboardData.storylines[row]
         };
 
 
@@ -456,8 +456,8 @@ storyboardModule.directive('options', function() {
         for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
             var event = $scope.options.storyboardEvents[i];
 
-            if(event.storyline == oldStorylineName) {
-                event.storyline = newStorylineName;
+            if(event.storylineName == oldStorylineName) {
+                event.storylineName = newStorylineName;
             }
         }
 

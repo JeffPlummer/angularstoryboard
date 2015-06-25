@@ -12,7 +12,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item1",
             text: "Hello this is a test",
             image: "http://www.slopemedia.org/wp-content/uploads/2015/02/cats.jpg",
-            storyline: "story1"
+            storylineName: "story1"
         },
         {
             startDate: new Date(2015,1,1,12,0),
@@ -20,7 +20,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item2",
             text: "World",
             image: "http://www.dogtrainingnation.com/wp-content/uploads/2015/02/iStock_000016265624_Large.jpg",
-            storyline: "story1"
+            storylineName: "story1"
         },
         {
             startDate: new Date(2015,0,1,12,0),
@@ -36,7 +36,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item1",
             text: "Hello this is a test",
             image: "http://www.slopemedia.org/wp-content/uploads/2015/02/cats.jpg",
-            storyline: "story2"
+            storylineName: "story2"
         },
         {
             startDate: new Date(2015,1,1,12,0),
@@ -44,7 +44,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item2",
             text: "World",
             image: "http://www.dogtrainingnation.com/wp-content/uploads/2015/02/iStock_000016265624_Large.jpg",
-            storyline: "story3"
+            storylineName: "story3"
         },
         {
             startDate: new Date(2015,0,1,12,0),
@@ -52,7 +52,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item1",
             text: "Howdy",
             image: "http://www.dogtrainingnation.com/wp-content/uploads/2015/02/iStock_000016265624_Large.jpg",
-            storyline: "story4"
+            storylineName: "story4"
         }
     ];
 });
