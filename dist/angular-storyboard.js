@@ -295,6 +295,8 @@ storyboardModule.directive('options', function() {
             $scope.$emit('recalculateStoryboard');
             $scope.initializeStorylines();
         }
+
+        $scope.$emit("storyboardItemMoved", changedElement.event);
     };
 
     var eventAffectsMinMaxDates = function(item) {

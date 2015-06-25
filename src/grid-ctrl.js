@@ -121,6 +121,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             $scope.$emit('recalculateStoryboard');
             $scope.initializeStorylines();
         }
+
+        $scope.$emit("storyboardItemMoved", changedElement.event);
     };
 
     var eventAffectsMinMaxDates = function(item) {
