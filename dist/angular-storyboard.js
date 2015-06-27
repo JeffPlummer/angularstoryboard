@@ -275,6 +275,7 @@ storyboardModule.directive('options', function() {
 
     var onElementResized = function(changedElement) {
         changedElement.event.endDate = calcDateFromColumn(changedElement.col+changedElement.sizeX);
+        $scope.$emit("storyboardItemResized", changedElement.event);
     };
 
     var onElementMoved = function(changedElement) {
