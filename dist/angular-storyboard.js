@@ -77,10 +77,11 @@ storyboardModule.directive('options', function() {
         $scope.storyboardData.maxDate.setDate($scope.storyboardData.maxDate.getDate() + 2);
 
         //Set default view range
-        $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
-        $scope.storyboardData.maxViewDate  =  new Date(
-            ($scope.storyboardData.maxDate - $scope.storyboardData.minDate)/5 +  $scope.storyboardData.minDate.getTime() + 1000000);
-
+        if($scope.storyboardData.minViewDate == null) {
+            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
+            $scope.storyboardData.maxViewDate = new Date(
+                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
+        }
 
         console.log("minDate = " + $scope.storyboardData.minDate);
         console.log("maxDate = " + $scope.storyboardData.maxDate);
@@ -302,12 +303,12 @@ storyboardModule.directive('options', function() {
 
     var eventAffectsMinMaxDates = function(item) {
         var affects = false;
-        //if( ($scope.options.extendBeyondInHours) && ($scope.options.extendBeyondInHours > 0) ) {
-        //    if ( ($scope.options.gridSizeInHours*item.col < $scope.options.extendBeyondInHours) ||
-        //        ( ($scope.gridsterOpts.columns - item.col) < $scope.options.extendBeyondInHours) ) {
-        //        affects = true;
-        //    }
-        //}
+        if( ($scope.options.extendBeyondInHours) && ($scope.options.extendBeyondInHours > 0) ) {
+            if ( ($scope.options.gridSizeInHours*item.col < $scope.options.extendBeyondInHours) ||
+                ( ($scope.gridsterOpts.columns - item.col) < $scope.options.extendBeyondInHours) ) {
+                affects = true;
+            }
+        }
 
         return affects;
     };

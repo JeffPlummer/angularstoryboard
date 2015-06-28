@@ -36,10 +36,11 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         $scope.storyboardData.maxDate.setDate($scope.storyboardData.maxDate.getDate() + 2);
 
         //Set default view range
-        $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
-        $scope.storyboardData.maxViewDate  =  new Date(
-            ($scope.storyboardData.maxDate - $scope.storyboardData.minDate)/5 +  $scope.storyboardData.minDate.getTime() + 1000000);
-
+        if($scope.storyboardData.minViewDate == null) {
+            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
+            $scope.storyboardData.maxViewDate = new Date(
+                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
+        }
 
         console.log("minDate = " + $scope.storyboardData.minDate);
         console.log("maxDate = " + $scope.storyboardData.maxDate);
