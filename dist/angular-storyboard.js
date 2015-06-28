@@ -302,12 +302,12 @@ storyboardModule.directive('options', function() {
 
     var eventAffectsMinMaxDates = function(item) {
         var affects = false;
-        if( ($scope.options.extendBeyondInHours) && ($scope.options.extendBeyondInHours > 0) ) {
-            if ( ($scope.options.gridSizeInHours*item.col < $scope.options.extendBeyondInHours) ||
-                ( ($scope.gridsterOpts.columns - item.col) < $scope.options.extendBeyondInHours) ) {
-                affects = true;
-            }
-        }
+        //if( ($scope.options.extendBeyondInHours) && ($scope.options.extendBeyondInHours > 0) ) {
+        //    if ( ($scope.options.gridSizeInHours*item.col < $scope.options.extendBeyondInHours) ||
+        //        ( ($scope.gridsterOpts.columns - item.col) < $scope.options.extendBeyondInHours) ) {
+        //        affects = true;
+        //    }
+        //}
 
         return affects;
     };
