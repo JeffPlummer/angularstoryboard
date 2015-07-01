@@ -149,9 +149,8 @@ storyboardModule.directive('options', function() {
     var createTimelineSliderData = function() {
         console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
-        $scope.timelineSliderOptions.selectedRange.min = $scope.storyboardData.minViewDate;
-        $scope.timelineSliderOptions.selectedRange.max = $scope.storyboardData.maxViewDate;
-        $scope.$apply();
+        $scope.timelineSliderOptions.selectedRange = { min: $scope.storyboardData.minViewDate, max: $scope.storyboardData.maxViewDate }
+        //$scope.$apply();
     };
 
     //Update variables from slider action
