@@ -482,7 +482,7 @@ storyboardModule.directive('options', function() {
     var onInputStoryboardEventsChanged = function(oldValue, newValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
             console.log("Different");
-            initializeStorylines();
+            $scope.initializeStorylines();
         }
         else {
             console.log("Same");
