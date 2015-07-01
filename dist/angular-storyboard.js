@@ -94,6 +94,8 @@ storyboardModule.directive('options', function() {
 
         console.log("minDate = " + $scope.storyboardData.minDate);
         console.log("maxDate = " + $scope.storyboardData.maxDate);
+        console.log("minViewDate = " + $scope.storyboardData.minViewDate);
+        console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
     };
 
     $scope.sliderMouseDown = false;
@@ -107,7 +109,10 @@ storyboardModule.directive('options', function() {
     });
 
     $scope.$on('trigggerRecalculateStoryboard', function() {
+        console.log("**************** TRIGGER RE_CALCULATE **************");
+        console.log("init storyboard");
         $scope.initializeStoryboard();
+        console.log("broadcast recalculateStoryboard" );
         $scope.$broadcast('recalculateStoryboard');
     });
 
@@ -142,7 +147,7 @@ storyboardModule.directive('options', function() {
 
 
     var createTimelineSliderData = function() {
-        console.log("createTimelineSliderData")
+        console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange.min = $scope.storyboardData.minViewDate;
         $scope.timelineSliderOptions.selectedRange.max = $scope.storyboardData.maxViewDate;
@@ -185,7 +190,10 @@ storyboardModule.directive('options', function() {
     $scope.$watch('storyboardData.minDate',createTimelineSliderData);
 
 
-    $scope.$on('recalculateStoryboard', $scope.initializeSlider());
+    $scope.$on('recalculateStoryboard', function() {
+        console.log("***** slider recalculating");
+        $scope.initializeSlider()
+    });
 });;angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
 
     $scope.gridWidth = 0;
@@ -492,7 +500,10 @@ storyboardModule.directive('options', function() {
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
 
 
-    $scope.$on('recalculateStoryboard', $scope.initializeStorylines());
+    $scope.$on('recalculateStoryboard', function() {
+        console.log("***** Grid is recalculating");
+        $scope.initializeStorylines();
+    });
 
 });
 

@@ -304,7 +304,10 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
 
 
-    $scope.$on('recalculateStoryboard', $scope.initializeStorylines());
+    $scope.$on('recalculateStoryboard', function() {
+        console.log("***** Grid is recalculating");
+        $scope.initializeStorylines();
+    });
 
 });
 

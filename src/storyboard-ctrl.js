@@ -53,6 +53,8 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
 
         console.log("minDate = " + $scope.storyboardData.minDate);
         console.log("maxDate = " + $scope.storyboardData.maxDate);
+        console.log("minViewDate = " + $scope.storyboardData.minViewDate);
+        console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
     };
 
     $scope.sliderMouseDown = false;
@@ -66,7 +68,10 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     });
 
     $scope.$on('trigggerRecalculateStoryboard', function() {
+        console.log("**************** TRIGGER RE_CALCULATE **************");
+        console.log("init storyboard");
         $scope.initializeStoryboard();
+        console.log("broadcast recalculateStoryboard" );
         $scope.$broadcast('recalculateStoryboard');
     });
 
