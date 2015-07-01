@@ -83,7 +83,10 @@ storyboardModule.directive('options', function() {
         $scope.storyboardData.maxDate.setDate($scope.storyboardData.maxDate.getDate() + 2);
 
         //Set default view range
-        if($scope.storyboardData.minViewDate == null) {
+        if ( ($scope.storyboardData.minViewDate == null) ||
+            ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ||
+            ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxViewDate)
+        ){
             $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
             $scope.storyboardData.maxViewDate = new Date(
                 ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
