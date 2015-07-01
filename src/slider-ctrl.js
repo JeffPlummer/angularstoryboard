@@ -66,4 +66,7 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
     $scope.$watch('storyboardData.maxViewDate', debounceUpdateFromScroll);
 
     $scope.$watch('storyboardData.minDate',createTimelineSliderData);
+
+
+    $scope.$on('recalculateStoryboard', $scope.initializeSlider());
 });

@@ -65,11 +65,12 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         $scope.sliderMouseDown = false;
     });
 
+    $scope.$on('trigggerRecalculateStoryboard', function() {
+        $scope.initializeStoryboard();
+        $scope.broadcast('recalculateStoryboard');
+    });
+
     $scope.$on('recalculateStoryboard', initMinMaxDates);
-
-
-
-
 
 
 

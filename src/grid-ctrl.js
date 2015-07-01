@@ -298,11 +298,13 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
             console.log("Different");
-            $scope.$emit('recalculateStoryboard');
-            $scope.initializeStorylines();
+            $scope.$emit('trigggerRecalculateStoryboard');
         }
     };
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
+
+
+    $scope.$on('recalculateStoryboard', $scope.initializeStorylines());
 
 });
 

@@ -106,11 +106,12 @@ storyboardModule.directive('options', function() {
         $scope.sliderMouseDown = false;
     });
 
+    $scope.$on('trigggerRecalculateStoryboard', function() {
+        $scope.initializeStoryboard();
+        $scope.broadcast('recalculateStoryboard');
+    });
+
     $scope.$on('recalculateStoryboard', initMinMaxDates);
-
-
-
-
 
 
 
@@ -182,6 +183,9 @@ storyboardModule.directive('options', function() {
     $scope.$watch('storyboardData.maxViewDate', debounceUpdateFromScroll);
 
     $scope.$watch('storyboardData.minDate',createTimelineSliderData);
+
+
+    $scope.$on('recalculateStoryboard', $scope.initializeSlider());
 });;angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
 
     $scope.gridWidth = 0;
@@ -482,11 +486,13 @@ storyboardModule.directive('options', function() {
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
             console.log("Different");
-            $scope.$emit('recalculateStoryboard');
-            $scope.initializeStorylines();
+            $scope.$emit('trigggerRecalculateStoryboard');
         }
     };
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
+
+
+    $scope.$on('recalculateStoryboard', $scope.initializeStorylines());
 
 });
 
