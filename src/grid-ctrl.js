@@ -291,21 +291,15 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         }
 
         $scope.$emit("storylineChanged", oldStorylineName, newStorylineName);
-
         return true;
     };
 
 
-
-
-    var onInputStoryboardEventsChanged = function(oldValue, newValue) {
+    var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
             console.log("Different");
-            //$scope.initializeStorylines();
             $scope.$emit('recalculateStoryboard');
-        }
-        else {
-            console.log("Same");
+            $scope.initializeStorylines();
         }
     };
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
