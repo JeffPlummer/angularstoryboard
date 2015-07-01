@@ -68,10 +68,10 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     });
 
     $scope.$on('trigggerRecalculateStoryboard', function() {
-        console.log("**************** TRIGGER RE_CALCULATE **************");
-        console.log("init storyboard");
+        //console.log("**************** TRIGGER RE_CALCULATE **************");
+        //console.log("init storyboard");
         $scope.initializeStoryboard();
-        console.log("broadcast recalculateStoryboard" );
+        //console.log("broadcast recalculateStoryboard" );
         $scope.$broadcast('recalculateStoryboard');
     });
 

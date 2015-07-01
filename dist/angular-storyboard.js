@@ -109,10 +109,10 @@ storyboardModule.directive('options', function() {
     });
 
     $scope.$on('trigggerRecalculateStoryboard', function() {
-        console.log("**************** TRIGGER RE_CALCULATE **************");
-        console.log("init storyboard");
+        //console.log("**************** TRIGGER RE_CALCULATE **************");
+        //console.log("init storyboard");
         $scope.initializeStoryboard();
-        console.log("broadcast recalculateStoryboard" );
+        //console.log("broadcast recalculateStoryboard" );
         $scope.$broadcast('recalculateStoryboard');
     });
 
@@ -191,7 +191,7 @@ storyboardModule.directive('options', function() {
 
 
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** slider recalculating");
+        //console.log("***** slider recalculating");
         $scope.initializeSlider()
     });
 });;angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
@@ -501,7 +501,7 @@ storyboardModule.directive('options', function() {
 
 
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** Grid is recalculating");
+        //console.log("***** Grid is recalculating");
         $scope.initializeStorylines();
     });
 

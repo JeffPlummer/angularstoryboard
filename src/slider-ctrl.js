@@ -69,7 +69,7 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
 
 
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** slider recalculating");
+        //console.log("***** slider recalculating");
         $scope.initializeSlider()
     });
 });

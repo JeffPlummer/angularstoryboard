@@ -305,7 +305,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
 
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** Grid is recalculating");
+        //console.log("***** Grid is recalculating");
         $scope.initializeStorylines();
     });
 
