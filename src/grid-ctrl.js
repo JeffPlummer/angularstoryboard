@@ -202,7 +202,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         var xScroll = (viewStart / totalHours)*$scope.gridWidth;
 
         gridElement.scrollLeft(xScroll);
-    }
+    };
     var viewBoundsChanged = function() {
         //TODO: Only update if it wasn't a grid scroll
         if($scope.sliderMouseDown) {

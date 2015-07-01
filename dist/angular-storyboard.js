@@ -58,18 +58,24 @@ storyboardModule.directive('options', function() {
 
     var initMinMaxDates = function() {
         var len = $scope.options.storyboardEvents.length;
-        for (var i = 0; i < len; i++) {
-            if(i==0) {
-                $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
-                $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].startDate);
-            }
+        if (len >0) {
+            for (var i = 0; i < len; i++) {
+                if (i == 0) {
+                    $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
+                    $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].startDate);
+                }
 
-            if(new Date($scope.options.storyboardEvents[i].startDate) < $scope.storyboardData.minDate) {
-                $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
+                if (new Date($scope.options.storyboardEvents[i].startDate) < $scope.storyboardData.minDate) {
+                    $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
+                }
+                if (new Date($scope.options.storyboardEvents[i].endDate) > $scope.storyboardData.maxDate) {
+                    $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].endDate);
+                }
             }
-            if(new Date($scope.options.storyboardEvents[i].endDate) > $scope.storyboardData.maxDate) {
-                $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].endDate);
-            }
+        }
+        else {
+            $scope.storyboardData.minDate = new Date().addHours(24*-2);
+            $scope.storyboardData.maxDate = new Date().addHours(24*2);
         }
 
         //Add a couple days to before and after to give some room
@@ -377,7 +383,7 @@ storyboardModule.directive('options', function() {
         var xScroll = (viewStart / totalHours)*$scope.gridWidth;
 
         gridElement.scrollLeft(xScroll);
-    }
+    };
     var viewBoundsChanged = function() {
         //TODO: Only update if it wasn't a grid scroll
         if($scope.sliderMouseDown) {
