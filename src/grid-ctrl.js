@@ -300,7 +300,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
     var onInputStoryboardEventsChanged = function(oldValue, newValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
-            console.log("Different")
+            console.log("Different");
+            initializeStorylines();
         }
         else {
             console.log("Same");
