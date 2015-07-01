@@ -70,7 +70,7 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         $scope.broadcast('recalculateStoryboard');
     });
 
-    $scope.$on('recalculateStoryboard', initMinMaxDates);
+    //$scope.$on('recalculateStoryboard', initMinMaxDates);
 
 
 

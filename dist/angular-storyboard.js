@@ -111,7 +111,7 @@ storyboardModule.directive('options', function() {
         $scope.broadcast('recalculateStoryboard');
     });
 
-    $scope.$on('recalculateStoryboard', initMinMaxDates);
+    //$scope.$on('recalculateStoryboard', initMinMaxDates);
 
 
 
@@ -307,8 +307,8 @@ storyboardModule.directive('options', function() {
 
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
-            $scope.$emit('recalculateStoryboard');
-            $scope.initializeStorylines();
+            $scope.$emit('trigggerRecalculateStoryboard');
+            //$scope.initializeStorylines();
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);

@@ -119,8 +119,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
-            $scope.$emit('recalculateStoryboard');
-            $scope.initializeStorylines();
+            $scope.$emit('trigggerRecalculateStoryboard');
+            //$scope.initializeStorylines();
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);
