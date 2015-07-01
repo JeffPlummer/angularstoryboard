@@ -108,7 +108,7 @@ storyboardModule.directive('options', function() {
 
     $scope.$on('trigggerRecalculateStoryboard', function() {
         $scope.initializeStoryboard();
-        $scope.broadcast('recalculateStoryboard');
+        $scope.$broadcast('recalculateStoryboard');
     });
 
     //$scope.$on('recalculateStoryboard', initMinMaxDates);
