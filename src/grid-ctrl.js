@@ -315,7 +315,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         $scope.options.storyboardEvents.push(newEvent);
 
         //Add storyboard item for event
-        addGridItemForEvent(newEvent, row);
+        //addGridItemForEvent(newEvent, row);
 
         $scope.$emit("addStoryline", newStoryline);
     };
@@ -325,7 +325,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             var event = $scope.options.storyboardEvents[i];
 
             if (event.storylineName == delStoryline) {
-                alert("Cannot delete storyline while any events are still attached to it.");
+                alert("Cannot delete storyline while any events are still attached to it.  Delete or move any events to another storyline first.");
                 return;
             }
         }

@@ -510,7 +510,7 @@ storyboardModule.directive('options', function() {
         $scope.options.storyboardEvents.push(newEvent);
 
         //Add storyboard item for event
-        addGridItemForEvent(newEvent, row);
+        //addGridItemForEvent(newEvent, row);
 
         $scope.$emit("addStoryline", newStoryline);
     };
@@ -520,7 +520,7 @@ storyboardModule.directive('options', function() {
             var event = $scope.options.storyboardEvents[i];
 
             if (event.storylineName == delStoryline) {
-                alert("Cannot delete storyline while any events are still attached to it.");
+                alert("Cannot delete storyline while any events are still attached to it.  Delete or move any events to another storyline first.");
                 return;
             }
         }
