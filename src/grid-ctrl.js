@@ -294,6 +294,29 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         return true;
     };
 
+    $scope.addStoryline = function() {
+        var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
+        $scope.storyboardData.storylines.push(newStoryline);
+        $scope.$emit("addStoryline", newStoryline);
+    };
+
+    $scope.deleteStoryline = function(delStoryline) {
+        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
+            var event = $scope.options.storyboardEvents[i];
+
+            if (event.storylineName == delStoryline) {
+                alert("Cannot delete storyline while any events are still attached to it.");
+                return;
+            }
+        }
+        var storylineIndex = $scope.storyboardData.storylines.indexOf(delStoryline);
+        if(storylineIndex > -1) {
+            $scope.storyboardData.storylines.splice(storylineIndex, 1);
+            createGridEventObjects();
+            $scope.$emit("deleteStoryline", delStoryline);
+        }
+    };
+
 
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {

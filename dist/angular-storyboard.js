@@ -489,6 +489,29 @@ storyboardModule.directive('options', function() {
         return true;
     };
 
+    $scope.addStoryline = function() {
+        var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
+        $scope.storyboardData.storylines.push(newStoryline);
+        $scope.$emit("addStoryline", newStoryline);
+    };
+
+    $scope.deleteStoryline = function(delStoryline) {
+        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
+            var event = $scope.options.storyboardEvents[i];
+
+            if (event.storylineName == delStoryline) {
+                alert("Cannot delete storyline while any events are still attached to it.");
+                return;
+            }
+        }
+        var storylineIndex = $scope.storyboardData.storylines.indexOf(delStoryline);
+        if(storylineIndex > -1) {
+            $scope.storyboardData.storylines.splice(storylineIndex, 1);
+            createGridEventObjects();
+            $scope.$emit("deleteStoryline", delStoryline);
+        }
+    };
+
 
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
@@ -541,22 +564,27 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "            </div>\n" +
     "\n" +
     "            <!-- Lines -->\n" +
-    "            <div class=\"storyboard_table_container\" style=\"z-index: 1; width: 100%; overflow-x: auto; position: absolute; top:0px; left: 0px; pointer-events: none;\">\n" +
+    "            <div class=\"storyboard_table_container\" style=\" z-index: 1; width: 100%; overflow-x: auto; position: absolute; top:0px; left: 0px; pointer-events: none;\">\n" +
     "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
     "                    <tr class=\"storyboard_tr\">\n" +
     "                        <th class=\"storyboard_th\">\n" +
     "                            <span style=\"z-index: 100; pointer-events: auto;\">\n" +
     "                               <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
+    "                                <button ng-click=\"deleteStoryline(storyline)\">x</button>\n" +
     "                            </span>\n" +
     "                        </th>\n" +
     "                    </tr>\n" +
     "                </table>\n" +
+    "                <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\">Add New Storyline</button>\n" +
     "            </div>\n" +
     "\n" +
     "\n" +
     "        </div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "    </div>\n" +
-    "    <button>Add New Storylineee</button>\n" +
+    "\n" +
     "</div>\n" +
     "\n" +
     "");
