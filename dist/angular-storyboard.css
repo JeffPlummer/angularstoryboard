@@ -30,8 +30,9 @@
 
 }
 
-th {
+.storyboard_th {
     vertical-align: top;
+    text-align: center;
 }
 
 

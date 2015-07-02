@@ -282,6 +282,11 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     };
 
     $scope.updateStorylineName = function(oldStorylineName, newStorylineName) {
+        var storylineIndex = $scope.storyboardData.storylines.indexOf(oldStorylineName);
+        if(storylineIndex > -1) {
+            $scope.storyboardData.storylines[storylineIndex] = newStorylineName
+        }
+
         for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
             var event = $scope.options.storyboardEvents[i];
 
@@ -297,6 +302,21 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     $scope.addStoryline = function() {
         var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
         $scope.storyboardData.storylines.push(newStoryline);
+
+        //Create new event so gridster will add the row
+        var newEvent = {
+            startDate: $scope.storyboardData.minViewDate,
+            endDate: new Date( $scope.storyboardData.minViewDate.getTime() + 1000000),
+            title: "new event",
+            storylineName: newStoryline
+        };
+
+        //Add to list of events
+        $scope.options.storyboardEvents.push(newEvent);
+
+        //Add storyboard item for event
+        addGridItemForEvent(newEvent, row);
+
         $scope.$emit("addStoryline", newStoryline);
     };
 
