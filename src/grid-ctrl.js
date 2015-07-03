@@ -204,7 +204,6 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         gridElement.scrollLeft(xScroll);
     };
     var viewBoundsChanged = function() {
-        //TODO: Only update if it wasn't a grid scroll
         if($scope.sliderMouseDown) {
             updateGridBounds();
         }
@@ -265,10 +264,12 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         var row = Math.floor(clickevent.offsetY / 180);
         var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
 
+        var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
+
         //Create new event
         var newEvent = {
             startDate: calcDateFromColumn(col),
-            endDate: calcDateFromColumn(col+1),
+            endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
             title: "new event",
             storylineName: $scope.storyboardData.storylines[row]
         };
@@ -316,7 +317,6 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         //Add storyboard item for event
         //addGridItemForEvent(newEvent, row);
-
         $scope.$emit("addStoryline", newStoryline);
     };
 
