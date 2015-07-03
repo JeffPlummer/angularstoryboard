@@ -339,7 +339,14 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
 
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
-        if($scope.options.storyboardEvents.length != $scope.storyboardData.gridEvents.length) {
+        //Create an array of the events attached to grid items
+        var gridEvs = $.map($scope.storyboardData.gridEvents, function(val, i) {
+            return val.event;
+        });
+        //Compare against the input storyboard events to see if things have changed.
+        if( $($scope.options.storyboardEvents).not(gridEvs).length === 0 && $(gridEvs).not($scope.options.storyboardEvents).length === 0 ) {
+
+        } else {
             console.log("Different");
             $scope.$emit('trigggerRecalculateStoryboard');
         }
