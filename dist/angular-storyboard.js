@@ -198,19 +198,15 @@ storyboardModule.directive('options', function() {
     $scope.gridWidth = 0;
     $scope.renameStorylines = false;
 
-    $scope.initializeStorylines = function() {
+    $scope.initializeGridAndStorylines = function() {
         createStoryboardStorylines();
         initializeEventGrid();
         updateGridBounds();
     };
 
     //Storylines
-    $scope.createArray = function(num) {
-        return new Array(num);
-    };
-
     var createStoryboardStorylines = function() {
-        $scope.storyboardData.storylines = [];
+        $scope.storyboardData.storylines = $scope.options.storylines;
         var storylinesHashObject = {};
 
         //Create storylines hash object
@@ -233,7 +229,7 @@ storyboardModule.directive('options', function() {
 
         //Crate array from hash object
         for (var prop in storylinesHashObject) {
-            if(prop != "_undefined") { //Do undefined last
+            if( (prop != "_undefined") && ($scope.storyboardData.storylines.indexOf(prop) == -1) ) { //Do undefined last
                 $scope.storyboardData.storylines.push(prop);
             }
         }
@@ -315,7 +311,6 @@ storyboardModule.directive('options', function() {
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
             $scope.$emit('trigggerRecalculateStoryboard');
-            //$scope.initializeStorylines();
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);
@@ -550,10 +545,13 @@ storyboardModule.directive('options', function() {
 
 
     $scope.$on('recalculateStoryboard', function() {
-        //console.log("***** Grid is recalculating");
-        $scope.initializeStorylines();
+        $scope.initializeGridAndStorylines();
     });
 
+
+    $scope.createArray = function(num) {
+        return new Array(num);
+    };
 });
 
 
@@ -571,7 +569,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "    </div>\n" +
     "\n" +
     "    <!-- story lines -->\n" +
-    "    <div ng-controller=\"gridCtrl\" ng-init=\"initializeStorylines()\" >\n" +
+    "    <div ng-controller=\"gridCtrl\" ng-init=\"initializeGridAndStorylines()\" >\n" +
     "        <div style=\"position: relative;\">\n" +
     "\n" +
     "            <!-- Grid -->\n" +
@@ -597,7 +595,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "                        <th class=\"storyboard_th\">\n" +
     "                            <span style=\"z-index: 100; pointer-events: auto;\">\n" +
     "                               <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
-    "                                <button ng-click=\"deleteStoryline(storyline)\">x</button>\n" +
+    "                                <button class=\"btn btn-danger btn-xs\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
     "                            </span>\n" +
     "                        </th>\n" +
     "                    </tr>\n" +

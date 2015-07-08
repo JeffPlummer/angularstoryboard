@@ -5,6 +5,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
     $scope.myOptions.gridSizeInHours = 4;
     $scope.myOptions.extendBeyondInHours = 48;
     $scope.myOptions.enableRenameStorylines = true;
+    $scope.myOptions.storylines = ['foobar'];
     $scope.myOptions.storyboardEvents = [
         {
             startDate: new Date(2015,0,1,4,05),

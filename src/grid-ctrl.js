@@ -3,19 +3,15 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     $scope.gridWidth = 0;
     $scope.renameStorylines = false;
 
-    $scope.initializeStorylines = function() {
+    $scope.initializeGridAndStorylines = function() {
         createStoryboardStorylines();
         initializeEventGrid();
         updateGridBounds();
     };
 
     //Storylines
-    $scope.createArray = function(num) {
-        return new Array(num);
-    };
-
     var createStoryboardStorylines = function() {
-        $scope.storyboardData.storylines = [];
+        $scope.storyboardData.storylines = $scope.options.storylines;
         var storylinesHashObject = {};
 
         //Create storylines hash object
@@ -38,7 +34,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         //Crate array from hash object
         for (var prop in storylinesHashObject) {
-            if(prop != "_undefined") { //Do undefined last
+            if( (prop != "_undefined") && ($scope.storyboardData.storylines.indexOf(prop) == -1) ) { //Do undefined last
                 $scope.storyboardData.storylines.push(prop);
             }
         }
@@ -120,7 +116,6 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
             $scope.$emit('trigggerRecalculateStoryboard');
-            //$scope.initializeStorylines();
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);
@@ -355,10 +350,13 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
 
     $scope.$on('recalculateStoryboard', function() {
-        //console.log("***** Grid is recalculating");
-        $scope.initializeStorylines();
+        $scope.initializeGridAndStorylines();
     });
 
+
+    $scope.createArray = function(num) {
+        return new Array(num);
+    };
 });
 
 
