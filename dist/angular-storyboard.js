@@ -206,7 +206,7 @@ storyboardModule.directive('options', function() {
 
     //Storylines
     var createStoryboardStorylines = function() {
-        $scope.storyboardData.storylines = $scope.options.storylines;
+        $scope.storyboardData.storylines = ($scope.options.storylines)?$scope.options.storylines:[];
         var storylinesHashObject = {};
 
         //Create storylines hash object

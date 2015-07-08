@@ -11,7 +11,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
     //Storylines
     var createStoryboardStorylines = function() {
-        $scope.storyboardData.storylines = $scope.options.storylines;
+        $scope.storyboardData.storylines = ($scope.options.storylines)?$scope.options.storylines:[];
         var storylinesHashObject = {};
 
         //Create storylines hash object
