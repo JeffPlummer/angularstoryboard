@@ -590,8 +590,8 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "        <div style=\"position: relative;\">\n" +
     "\n" +
     "            <!-- Grid -->\n" +
-    "            <div id=\"storyboardGridContainer\" style=\"z-index: 10; width: 100%; overflow-x: auto; \">\n" +
-    "                <div id=\"storyboardGrid\" gridster=\"gridsterOpts\" ng-style=\"{width: gridWidth}\" ng-dblClick=\"doubleClick($event)\">\n" +
+    "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\">\n" +
+    "                <div id=\"storyboardGrid\" gridster=\"gridsterOpts\" style=\"\" ng-style=\"{width: gridWidth}\" ng-dblClick=\"doubleClick($event)\">\n" +
     "                    <ul>\n" +
     "                        <li gridster-item=\"item\" ng-repeat=\"item in storyboardData.gridEvents\">\n" +
     "                            <div ng-if=\"showGridEventInView(item)\" class=\"eventStoryboardItem\">\n" +

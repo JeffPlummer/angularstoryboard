@@ -5,11 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.css" afterPath="$PROJECT_DIR$/dist/angular-storyboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/angular-storyboard.css" afterPath="$PROJECT_DIR$/src/css/angular-storyboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.min.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/example.html" afterPath="$PROJECT_DIR$/example/example.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grid-ctrl.js" afterPath="$PROJECT_DIR$/src/grid-ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ngStoryboard.js" afterPath="$PROJECT_DIR$/src/ngStoryboard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/templates/storyboard-template.html" afterPath="$PROJECT_DIR$/src/templates/storyboard-template.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -52,20 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular-storyboard.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="angular-storyboard.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/css/angular-storyboard.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.074875206">
+              <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44925123">
+            <state vertical-scroll-proportion="0.0">
               <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
               <folding />
             </state>
@@ -75,11 +70,10 @@
       <file leaf-file-name="storyboard-template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/templates/storyboard-template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.541667">
-              <caret line="32" column="98" selection-start-line="32" selection-start-column="98" selection-end-line="32" selection-end-column="98" />
+            <state vertical-scroll-proportion="-7.1666665">
+              <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -175,9 +169,9 @@
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/src/ngStoryboard.js" />
         <option value="$PROJECT_DIR$/example/example.html" />
+        <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
         <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/src/css/angular-storyboard.css" />
-        <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
       </list>
     </option>
   </component>
@@ -845,19 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/templates/storyboard-template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.541667">
-          <caret line="32" column="98" selection-start-line="32" selection-start-column="98" selection-end-line="32" selection-end-column="98" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ngStoryboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -866,18 +847,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/angular-storyboard.css">
+    <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
+    <entry file="file://$PROJECT_DIR$/src/templates/storyboard-template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44925123">
-          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+        <state vertical-scroll-proportion="-7.1666665">
+          <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/angular-storyboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.074875206">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
           <folding />
         </state>
       </provider>
