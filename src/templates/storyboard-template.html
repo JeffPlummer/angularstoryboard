@@ -30,7 +30,9 @@
             <div class="storyboard_table_container" ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
                 <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
                     <tr class="storyboard_tr">
-                        <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines"></td>
+                        <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines">
+                            <div class="vertical-text"><div class="vertical-text__inner">Drag to re-order</div></div>
+                            </td>
                         <th class="storyboard_th">
                             <span style="z-index: 100; pointer-events: auto;">
                                <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>

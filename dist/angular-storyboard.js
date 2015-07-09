@@ -609,7 +609,9 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "            <div class=\"storyboard_table_container\" ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
     "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
     "                    <tr class=\"storyboard_tr\">\n" +
-    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\"></td>\n" +
+    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\">\n" +
+    "                            <div class=\"vertical-text\"><div class=\"vertical-text__inner\">Drag to re-order</div></div>\n" +
+    "                            </td>\n" +
     "                        <th class=\"storyboard_th\">\n" +
     "                            <span style=\"z-index: 100; pointer-events: auto;\">\n" +
     "                               <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
