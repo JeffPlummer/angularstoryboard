@@ -8,7 +8,13 @@
 
 .storyboard_table_container {
     background: url('../img/additembg.png') no-repeat 50% 20px;
-    z-index: 10;
+    z-index: 1;
+    width: 100%;
+    overflow-x: auto;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    pointer-events: none;
 }
 
 .storyboard_table {
@@ -20,13 +26,26 @@
     border-collapse: collapse;
     vertical-align: top;
     pointer-events: none;
+    height: 180px;
+}
 
+.highlight {
+    border: 1px solid red;
+    font-weight: bold;
+    font-size: 45px;
+    background-color: lightblue;
+    height: 180px;
+}
+
+.dragplaceholder {
+    height: 180px;
+    background-color: gainsboro;
 }
 
 
 
 .storyboard_tr {
-    height: 180px;
+
 
 }
 
@@ -35,7 +54,13 @@
     text-align: center;
 }
 
-
+.storyboard-drag-reorder-cell {
+    border: 1px solid black;
+    width: 20px;
+    z-index: 100;
+    pointer-events: auto;
+    cursor: move;
+}
 
 a.editable-click {
     color: green;

@@ -1,5 +1,5 @@
 var storyboardModule = angular.module('storyboard', ['storyboard-templates', 'jqrange-slider',
-    'gridster', 'duScroll']);
+    'gridster', 'duScroll', 'ui.sortable']);
 
 storyboardModule.directive('storyboard', function() {
 

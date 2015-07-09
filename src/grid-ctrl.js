@@ -3,6 +3,23 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     $scope.gridWidth = 0;
     $scope.renameStorylines = false;
 
+    $scope.sortableOptions = {
+        axis: 'y',
+        'ui-floating': true,
+        placeholder: "highlight",
+        start: function (event, ui) {
+            $scope.storyboardData.gridEvents = [];
+            $scope.$apply();
+            ui.item.toggleClass("highlight");
+        },
+        stop: function (event, ui) {
+            initializeEventGrid();
+            updateGridBounds();
+            ui.item.toggleClass("highlight");
+            $scope.$emit("reorderStorylines", $scope.storyboardData.storylines);
+        }
+    };
+
     $scope.initializeGridAndStorylines = function() {
         createStoryboardStorylines();
         initializeEventGrid();

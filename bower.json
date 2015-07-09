@@ -12,7 +12,8 @@
     "angular-jqrange-slider":"https://github.com/JeffPlummer/angular-jqrange-slider.git",
     "angular-scroll":"*",
     "moment":"2.10.2",
-    "underscore":"*"
+    "underscore":"*",
+    "angular-ui-sortable":"*"
   },
   "ignore" : [
     "src",

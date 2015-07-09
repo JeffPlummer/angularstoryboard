@@ -1,5 +1,5 @@
 var storyboardModule = angular.module('storyboard', ['storyboard-templates', 'jqrange-slider',
-    'gridster', 'duScroll']);
+    'gridster', 'duScroll', 'ui.sortable']);
 
 storyboardModule.directive('storyboard', function() {
 
@@ -197,6 +197,23 @@ storyboardModule.directive('options', function() {
 
     $scope.gridWidth = 0;
     $scope.renameStorylines = false;
+
+    $scope.sortableOptions = {
+        axis: 'y',
+        'ui-floating': true,
+        placeholder: "highlight",
+        start: function (event, ui) {
+            $scope.storyboardData.gridEvents = [];
+            $scope.$apply();
+            ui.item.toggleClass("highlight");
+        },
+        stop: function (event, ui) {
+            initializeEventGrid();
+            updateGridBounds();
+            ui.item.toggleClass("highlight");
+            $scope.$emit("reorderStorylines", $scope.storyboardData.storylines);
+        }
+    };
 
     $scope.initializeGridAndStorylines = function() {
         createStoryboardStorylines();
@@ -589,9 +606,10 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "            </div>\n" +
     "\n" +
     "            <!-- Lines -->\n" +
-    "            <div class=\"storyboard_table_container\" style=\" z-index: 1; width: 100%; overflow-x: auto; position: absolute; top:0px; left: 0px; pointer-events: none;\">\n" +
+    "            <div class=\"storyboard_table_container\" ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
     "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
     "                    <tr class=\"storyboard_tr\">\n" +
+    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\"></td>\n" +
     "                        <th class=\"storyboard_th\">\n" +
     "                            <span style=\"z-index: 100; pointer-events: auto;\">\n" +
     "                               <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
