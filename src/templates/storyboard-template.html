@@ -12,7 +12,7 @@
 
             <!-- Grid -->
             <div id="storyboardGridContainer" class="storyboardContains">
-                <div id="storyboardGrid" gridster="gridsterOpts" style="" ng-style="{width: gridWidth}" ng-dblClick="doubleClick($event)">
+                <div id="storyboardGrid" class="storyboardGrid" gridster="gridsterOpts" style="" ng-style="{width: gridWidth}" ng-dblClick="doubleClick($event)">
                     <ul>
                         <li gridster-item="item" ng-repeat="item in storyboardData.gridEvents">
                             <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">

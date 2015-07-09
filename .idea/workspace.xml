@@ -5,8 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.css" afterPath="$PROJECT_DIR$/dist/angular-storyboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/angular-storyboard.css" afterPath="$PROJECT_DIR$/src/css/angular-storyboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.min.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/templates/storyboard-template.html" afterPath="$PROJECT_DIR$/src/templates/storyboard-template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angularstoryboard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +50,8 @@
       <file leaf-file-name="angular-storyboard.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/css/angular-storyboard.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.049916804">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.19966722">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -60,8 +60,8 @@
       <file leaf-file-name="storyboard-template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/templates/storyboard-template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.291667">
-              <caret line="33" column="105" selection-start-line="33" selection-start-column="105" selection-end-line="33" selection-end-column="105" />
+            <state vertical-scroll-proportion="-4.6666665">
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="62" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -169,8 +169,8 @@
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/src/ngStoryboard.js" />
         <option value="$PROJECT_DIR$/example/example.html" />
-        <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
+        <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/src/css/angular-storyboard.css" />
       </list>
     </option>
@@ -857,8 +857,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/storyboard-template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.291667">
-          <caret line="33" column="105" selection-start-line="33" selection-start-column="105" selection-end-line="33" selection-end-column="105" />
+        <state vertical-scroll-proportion="-4.6666665">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -869,8 +869,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/angular-storyboard.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.049916804">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.19966722">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding />
         </state>
       </provider>

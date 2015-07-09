@@ -591,7 +591,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "\n" +
     "            <!-- Grid -->\n" +
     "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\">\n" +
-    "                <div id=\"storyboardGrid\" gridster=\"gridsterOpts\" style=\"\" ng-style=\"{width: gridWidth}\" ng-dblClick=\"doubleClick($event)\">\n" +
+    "                <div id=\"storyboardGrid\" class=\"storyboardGrid\" gridster=\"gridsterOpts\" style=\"\" ng-style=\"{width: gridWidth}\" ng-dblClick=\"doubleClick($event)\">\n" +
     "                    <ul>\n" +
     "                        <li gridster-item=\"item\" ng-repeat=\"item in storyboardData.gridEvents\">\n" +
     "                            <div ng-if=\"showGridEventInView(item)\" class=\"eventStoryboardItem\">\n" +

@@ -5,6 +5,10 @@
     overflow-x: auto;
 }
 
+.storyboardGrid {
+    background-color: lightblue;
+}
+
 .storylineRow {
     width: 100%;
     border-top-style: dotted;
