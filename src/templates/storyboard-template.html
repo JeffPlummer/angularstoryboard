@@ -11,7 +11,6 @@
         <div style="position: relative;">
 
             <!-- Grid -->
-            <!---->
             <div id="storyboardGridContainer" class="storyboardContains" >
                 <div id="storyboardGrid" class="storyboardGrid"  ng-style="{width: gridWidth}" gridster="gridsterOpts"  ng-dblClick="doubleClick($event)">
                     <ul>
@@ -28,17 +27,18 @@
             </div>
 
             <!-- Lines -->
-            <div class="storyboard_table_container" ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
+            <div class="storyboard_table_container, storyboard_table_container_extendable" ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
                 <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
                     <tr class="storyboard_tr">
                         <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines">
                             <div class="vertical-text"><div class="vertical-text__inner">Drag to re-order</div></div>
                             </td>
                         <th class="storyboard_th">
-                            <span style="z-index: 100; pointer-events: auto;">
-                               <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>
+                            <span style="z-index: 100; pointer-events: auto;" ng-if="options.enableEditStorylines">
+                                <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>
                                 <button class="btn btn-danger btn-xs" ng-click="deleteStoryline(storyline)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                             </span>
+                            <label ng-if="!options.enableEditStorylines">{{storyline}}</label>
                         </th>
                     </tr>
                 </table>

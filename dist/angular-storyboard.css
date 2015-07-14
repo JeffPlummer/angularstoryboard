@@ -16,7 +16,7 @@
 }
 
 .storyboard_table_container {
-    background: url('../img/additembg.png') no-repeat 50% 20px;
+    /*background: url('../img/additembg.png') no-repeat 50% 20px;*/
     z-index: 1;
     width: 100%;
     overflow-x: auto;
@@ -24,6 +24,10 @@
     top:0px;
     left: 0px;
     pointer-events: none;
+}
+
+.storyboard_table_container_extendable {
+
 }
 
 .storyboard_table {

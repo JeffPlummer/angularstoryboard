@@ -38,8 +38,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         //Create storylines hash object
         for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
             var event = $scope.options.storyboardEvents[i];
-            event.startDate = new Date(event.startDate);
-            event.endDate = new Date(event.endDate);
+            //event.startDate = new Date(event.startDate);
+            //event.endDate = new Date(event.endDate);
             var storylineName = (event.storylineName)?event.storylineName : "_undefined";
 
             //If no hash entry exists for storyline, create one
@@ -166,6 +166,9 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         $scope.gridWidth = $scope.numColumnsLikely * $scope.gridsterOpts.colWidth;
         $scope.gridsterOpts.width = $scope.gridWidth;
+
+        $scope.gridsterOpts.resizable.enabled = $scope.options.enableEditStoylineEvents;
+        $scope.gridsterOpts.draggable.enabled = $scope.options.enableEditStoylineEvents;
     };
 
     var createGridEventObjects = function() {
@@ -279,26 +282,28 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
 
     $scope.doubleClick = function(clickevent) {
-        var grid = document.getElementById('storyboardGrid');
-        var row = Math.floor(clickevent.offsetY / 180);
-        var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
 
-        var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
+        if($scope.options.enableEditStoylineEvents) {
+            var grid = document.getElementById('storyboardGrid');
+            var row = Math.floor(clickevent.offsetY / 180);
+            var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
 
-        //Create new event
-        var newEvent = {
-            startDate: calcDateFromColumn(col),
-            endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
-            title: "new event",
-            storylineName: $scope.storyboardData.storylines[row]
-        };
+            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
 
+            //Create new event
+            var newEvent = {
+                startDate: calcDateFromColumn(col),
+                endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
+                title: "new event",
+                storylineName: $scope.storyboardData.storylines[row]
+            };
 
-        //Add to list of events
-        $scope.options.storyboardEvents.push(newEvent);
+            //Add to list of events
+            $scope.options.storyboardEvents.push(newEvent);
 
-        //Add storyboard item for event
-        addGridItemForEvent(newEvent, row);
+            //Add storyboard item for event
+            addGridItemForEvent(newEvent, row);
+        }
     };
 
     $scope.updateStorylineName = function(oldStorylineName, newStorylineName) {

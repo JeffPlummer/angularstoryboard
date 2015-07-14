@@ -237,8 +237,8 @@ storyboardModule.directive('options', function() {
         //Create storylines hash object
         for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
             var event = $scope.options.storyboardEvents[i];
-            event.startDate = new Date(event.startDate);
-            event.endDate = new Date(event.endDate);
+            //event.startDate = new Date(event.startDate);
+            //event.endDate = new Date(event.endDate);
             var storylineName = (event.storylineName)?event.storylineName : "_undefined";
 
             //If no hash entry exists for storyline, create one
@@ -365,6 +365,9 @@ storyboardModule.directive('options', function() {
 
         $scope.gridWidth = $scope.numColumnsLikely * $scope.gridsterOpts.colWidth;
         $scope.gridsterOpts.width = $scope.gridWidth;
+
+        $scope.gridsterOpts.resizable.enabled = $scope.options.enableEditStoylineEvents;
+        $scope.gridsterOpts.draggable.enabled = $scope.options.enableEditStoylineEvents;
     };
 
     var createGridEventObjects = function() {
@@ -478,26 +481,28 @@ storyboardModule.directive('options', function() {
 
 
     $scope.doubleClick = function(clickevent) {
-        var grid = document.getElementById('storyboardGrid');
-        var row = Math.floor(clickevent.offsetY / 180);
-        var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
 
-        var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
+        if($scope.options.enableEditStoylineEvents) {
+            var grid = document.getElementById('storyboardGrid');
+            var row = Math.floor(clickevent.offsetY / 180);
+            var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
 
-        //Create new event
-        var newEvent = {
-            startDate: calcDateFromColumn(col),
-            endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
-            title: "new event",
-            storylineName: $scope.storyboardData.storylines[row]
-        };
+            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
 
+            //Create new event
+            var newEvent = {
+                startDate: calcDateFromColumn(col),
+                endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
+                title: "new event",
+                storylineName: $scope.storyboardData.storylines[row]
+            };
 
-        //Add to list of events
-        $scope.options.storyboardEvents.push(newEvent);
+            //Add to list of events
+            $scope.options.storyboardEvents.push(newEvent);
 
-        //Add storyboard item for event
-        addGridItemForEvent(newEvent, row);
+            //Add storyboard item for event
+            addGridItemForEvent(newEvent, row);
+        }
     };
 
     $scope.updateStorylineName = function(oldStorylineName, newStorylineName) {
@@ -596,7 +601,6 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "        <div style=\"position: relative;\">\n" +
     "\n" +
     "            <!-- Grid -->\n" +
-    "            <!---->\n" +
     "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\" >\n" +
     "                <div id=\"storyboardGrid\" class=\"storyboardGrid\"  ng-style=\"{width: gridWidth}\" gridster=\"gridsterOpts\"  ng-dblClick=\"doubleClick($event)\">\n" +
     "                    <ul>\n" +
@@ -613,17 +617,18 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "            </div>\n" +
     "\n" +
     "            <!-- Lines -->\n" +
-    "            <div class=\"storyboard_table_container\" ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
+    "            <div class=\"storyboard_table_container, storyboard_table_container_extendable\" ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
     "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
     "                    <tr class=\"storyboard_tr\">\n" +
     "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\">\n" +
     "                            <div class=\"vertical-text\"><div class=\"vertical-text__inner\">Drag to re-order</div></div>\n" +
     "                            </td>\n" +
     "                        <th class=\"storyboard_th\">\n" +
-    "                            <span style=\"z-index: 100; pointer-events: auto;\">\n" +
-    "                               <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
+    "                            <span style=\"z-index: 100; pointer-events: auto;\" ng-if=\"options.enableEditStorylines\">\n" +
+    "                                <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
     "                                <button class=\"btn btn-danger btn-xs\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
     "                            </span>\n" +
+    "                            <label ng-if=\"!options.enableEditStorylines\">{{storyline}}</label>\n" +
     "                        </th>\n" +
     "                    </tr>\n" +
     "                </table>\n" +
