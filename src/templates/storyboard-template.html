@@ -11,8 +11,9 @@
         <div style="position: relative;">
 
             <!-- Grid -->
-            <div id="storyboardGridContainer" class="storyboardContains">
-                <div id="storyboardGrid" class="storyboardGrid" gridster="gridsterOpts" style="" ng-style="{width: gridWidth}" ng-dblClick="doubleClick($event)">
+            <!---->
+            <div id="storyboardGridContainer" class="storyboardContains" >
+                <div id="storyboardGrid" class="storyboardGrid"  ng-style="{width: gridWidth}" gridster="gridsterOpts"  ng-dblClick="doubleClick($event)">
                     <ul>
                         <li gridster-item="item" ng-repeat="item in storyboardData.gridEvents">
                             <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">

@@ -22,12 +22,19 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
     $scope.initializeSlider = function() {
         createTimelineSliderData();
     };
+    $scope.$on('recalculateStoryboard', function() {
+        console.log("***** slider recalculating");
+        $scope.initializeSlider()
+    });
 
 
     var createTimelineSliderData = function() {
         console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange = { min: $scope.storyboardData.minViewDate, max: $scope.storyboardData.maxViewDate };
+
+        //console.log("bounds");
+        //console.log($scope.timelineSliderOptions.jqOptions.bounds);
     };
 
     //Update variables from slider action
@@ -56,7 +63,8 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
                 min: $scope.storyboardData.minViewDate,
                 max: $scope.storyboardData.maxViewDate
             };
-
+            //console.log("scroll");
+            //console.log($scope.timelineSliderOptions.selectedRange );
             $scope.$apply();
         }
     };
@@ -67,8 +75,5 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
     $scope.$watch('storyboardData.minDate',createTimelineSliderData);
 
 
-    $scope.$on('recalculateStoryboard', function() {
-        //console.log("***** slider recalculating");
-        $scope.initializeSlider()
-    });
+
 });

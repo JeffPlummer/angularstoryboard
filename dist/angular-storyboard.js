@@ -52,14 +52,18 @@ storyboardModule.directive('options', function() {
 
     $scope.initializeStoryboard = function() {
         initMinMaxDates();
+        //$scope.$broadcast('recalculateStoryboard');
     };
-
 
 
     var initMinMaxDates = function() {
         var len = $scope.options.storyboardEvents.length;
         if (len >0) {
             for (var i = 0; i < len; i++) {
+                var event = $scope.options.storyboardEvents[i];
+                event.startDate.setMinutes(0,0,0);
+                event.endDate.setMinutes(0,0,0);
+
                 if (i == 0) {
                     $scope.storyboardData.minDate = new Date($scope.options.storyboardEvents[i].startDate);
                     $scope.storyboardData.maxDate = new Date($scope.options.storyboardEvents[i].startDate);
@@ -108,16 +112,11 @@ storyboardModule.directive('options', function() {
         $scope.sliderMouseDown = false;
     });
 
-    $scope.$on('trigggerRecalculateStoryboard', function() {
-        //console.log("**************** TRIGGER RE_CALCULATE **************");
-        //console.log("init storyboard");
+    $scope.$on('triggerRecalculateStoryboard', function() {
+        console.log("**************** TRIGGER RE_CALCULATE **************");;
         $scope.initializeStoryboard();
-        //console.log("broadcast recalculateStoryboard" );
         $scope.$broadcast('recalculateStoryboard');
     });
-
-    //$scope.$on('recalculateStoryboard', initMinMaxDates);
-
 
 
 });;angular.module('storyboard').controller('sliderCtrl', function($scope) {
@@ -144,12 +143,19 @@ storyboardModule.directive('options', function() {
     $scope.initializeSlider = function() {
         createTimelineSliderData();
     };
+    $scope.$on('recalculateStoryboard', function() {
+        console.log("***** slider recalculating");
+        $scope.initializeSlider()
+    });
 
 
     var createTimelineSliderData = function() {
         console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange = { min: $scope.storyboardData.minViewDate, max: $scope.storyboardData.maxViewDate };
+
+        //console.log("bounds");
+        //console.log($scope.timelineSliderOptions.jqOptions.bounds);
     };
 
     //Update variables from slider action
@@ -178,7 +184,8 @@ storyboardModule.directive('options', function() {
                 min: $scope.storyboardData.minViewDate,
                 max: $scope.storyboardData.maxViewDate
             };
-
+            //console.log("scroll");
+            //console.log($scope.timelineSliderOptions.selectedRange );
             $scope.$apply();
         }
     };
@@ -189,13 +196,11 @@ storyboardModule.directive('options', function() {
     $scope.$watch('storyboardData.minDate',createTimelineSliderData);
 
 
-    $scope.$on('recalculateStoryboard', function() {
-        //console.log("***** slider recalculating");
-        $scope.initializeSlider()
-    });
+
 });;angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
 
     $scope.gridWidth = 0;
+    $scope.numColumnsLikely = 0;
     $scope.renameStorylines = false;
 
     $scope.sortableOptions = {
@@ -220,6 +225,9 @@ storyboardModule.directive('options', function() {
         initializeEventGrid();
         updateGridBounds();
     };
+    $scope.$on('recalculateStoryboard', function() {
+        $scope.initializeGridAndStorylines();
+    });
 
     //Storylines
     var createStoryboardStorylines = function() {
@@ -279,11 +287,11 @@ storyboardModule.directive('options', function() {
         maxRows: 100,
         maxSizeY: 1,
         minSizeX: 1,
-        width:0,
+        width:'auto',
         pushing: false,
         floating: false,
         swapping: false,
-        columns: 2, // the width of the grid, in columns
+        //columns: 100, // the width of the grid, in columns
         colWidth: 100, // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
         rowHeight: 180, // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.
         margins: [35, 10], // the pixel distance between each widget
@@ -325,9 +333,10 @@ storyboardModule.directive('options', function() {
         changedElement.event.startDate = calcDateFromColumn(newCol);
         changedElement.event.endDate = calcDateFromColumn(newCol+changedElement.sizeX);
 
+
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
-            $scope.$emit('trigggerRecalculateStoryboard');
+            $scope.$emit('triggerRecalculateStoryboard');
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);
@@ -349,15 +358,13 @@ storyboardModule.directive('options', function() {
         //Columns should be 1 for every 4 hours.
         var numBlocks = Math.floor($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate ) / $scope.options.gridSizeInHours);
         $scope.gridsterOpts.columns = numBlocks;
+        $scope.numColumnsLikely = numBlocks;
 
         //Set column width based on view width
         $scope.gridsterOpts.colWidth = 100;
 
-        $scope.gridWidth = $scope.gridsterOpts.columns * $scope.gridsterOpts.colWidth;
+        $scope.gridWidth = $scope.numColumnsLikely * $scope.gridsterOpts.colWidth;
         $scope.gridsterOpts.width = $scope.gridWidth;
-
-        console.log("columns = " + $scope.gridsterOpts.columns);
-        console.log("grid width = " + $scope.gridWidth);
     };
 
     var createGridEventObjects = function() {
@@ -383,7 +390,10 @@ storyboardModule.directive('options', function() {
     };
 
     var calcStartColumn = function(startdate) {
-        return Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)) / $scope.options.gridSizeInHours);
+        var diff = Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)));
+        var res = diff / $scope.options.gridSizeInHours;
+
+        return res;
     };
 
     var calcDateFromColumn = function(column) {
@@ -398,10 +408,11 @@ storyboardModule.directive('options', function() {
         var viewHours = $scope.storyboardData.maxViewDate.differenceInHours($scope.storyboardData.minViewDate);
         var elementWidth = document.getElementById('storyboardGridContainer').clientWidth;
         var colWidth = elementWidth/Math.floor(viewHours/$scope.options.gridSizeInHours);
-        $scope.gridsterOpts.colWidth = colWidth;
+        $scope.gridsterOpts.colWidth = Math.floor(colWidth);
 
         //Update scroll position
-        $scope.gridWidth = $scope.gridsterOpts.columns * $scope.gridsterOpts.colWidth;
+        $scope.gridWidth = $scope.numColumnsLikely * $scope.gridsterOpts.colWidth;
+        $scope.gridsterOpts.width = $scope.gridWidth;
         var totalHours = $scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate);
         var viewStart = $scope.storyboardData.minViewDate.differenceInHours($scope.storyboardData.minDate);
 
@@ -554,16 +565,11 @@ storyboardModule.directive('options', function() {
         if( $($scope.options.storyboardEvents).not(gridEvs).length === 0 && $(gridEvs).not($scope.options.storyboardEvents).length === 0 ) {
 
         } else {
-            console.log("Different");
-            $scope.$emit('trigggerRecalculateStoryboard');
+            $scope.$emit('triggerRecalculateStoryboard');
         }
     };
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
 
-
-    $scope.$on('recalculateStoryboard', function() {
-        $scope.initializeGridAndStorylines();
-    });
 
 
     $scope.createArray = function(num) {
@@ -590,8 +596,9 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "        <div style=\"position: relative;\">\n" +
     "\n" +
     "            <!-- Grid -->\n" +
-    "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\">\n" +
-    "                <div id=\"storyboardGrid\" class=\"storyboardGrid\" gridster=\"gridsterOpts\" style=\"\" ng-style=\"{width: gridWidth}\" ng-dblClick=\"doubleClick($event)\">\n" +
+    "            <!---->\n" +
+    "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\" >\n" +
+    "                <div id=\"storyboardGrid\" class=\"storyboardGrid\"  ng-style=\"{width: gridWidth}\" gridster=\"gridsterOpts\"  ng-dblClick=\"doubleClick($event)\">\n" +
     "                    <ul>\n" +
     "                        <li gridster-item=\"item\" ng-repeat=\"item in storyboardData.gridEvents\">\n" +
     "                            <div ng-if=\"showGridEventInView(item)\" class=\"eventStoryboardItem\">\n" +
