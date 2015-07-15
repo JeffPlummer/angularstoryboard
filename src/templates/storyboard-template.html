@@ -27,7 +27,7 @@
             </div>
 
             <!-- Lines -->
-            <div class="storyboard_table_container, storyboard_table_container_extendable" ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
+            <div class="storyboard_table_container storyboard_table_container_extendable" ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
                 <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
                     <tr class="storyboard_tr">
                         <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines">
@@ -45,11 +45,7 @@
                 <button style="z-index: 100; pointer-events: auto;" ng-click="addStoryline()">Add New Storyline</button>
             </div>
 
-
         </div>
-
-
-
     </div>
 
 </div>
