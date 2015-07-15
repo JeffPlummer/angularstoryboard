@@ -307,57 +307,63 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
     };
 
     $scope.updateStorylineName = function(oldStorylineName, newStorylineName) {
-        var storylineIndex = $scope.storyboardData.storylines.indexOf(oldStorylineName);
-        if(storylineIndex > -1) {
-            $scope.storyboardData.storylines[storylineIndex] = newStorylineName
-        }
-
-        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
-            var event = $scope.options.storyboardEvents[i];
-
-            if(event.storylineName == oldStorylineName) {
-                event.storylineName = newStorylineName;
+        if($scope.options.enableEditStoylineEvents) {
+            var storylineIndex = $scope.storyboardData.storylines.indexOf(oldStorylineName);
+            if (storylineIndex > -1) {
+                $scope.storyboardData.storylines[storylineIndex] = newStorylineName
             }
-        }
 
-        $scope.$emit("storylineChanged", oldStorylineName, newStorylineName);
-        return true;
+            for (var i = 0; i < $scope.options.storyboardEvents.length; i++) {
+                var event = $scope.options.storyboardEvents[i];
+
+                if (event.storylineName == oldStorylineName) {
+                    event.storylineName = newStorylineName;
+                }
+            }
+
+            $scope.$emit("storylineChanged", oldStorylineName, newStorylineName);
+            return true;
+        }
     };
 
     $scope.addStoryline = function() {
-        var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
-        $scope.storyboardData.storylines.push(newStoryline);
+        if($scope.options.enableEditStoylineEvents) {
+            var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
+            $scope.storyboardData.storylines.push(newStoryline);
 
-        //Create new event so gridster will add the row
-        var newEvent = {
-            startDate: $scope.storyboardData.minViewDate,
-            endDate: new Date( $scope.storyboardData.minViewDate.getTime() + 1000000),
-            title: "new event",
-            storylineName: newStoryline
-        };
+            //Create new event so gridster will add the row
+            var newEvent = {
+                startDate: $scope.storyboardData.minViewDate,
+                endDate: new Date($scope.storyboardData.minViewDate.getTime() + 1000000),
+                title: "new event",
+                storylineName: newStoryline
+            };
 
-        //Add to list of events
-        $scope.options.storyboardEvents.push(newEvent);
+            //Add to list of events
+            $scope.options.storyboardEvents.push(newEvent);
 
-        //Add storyboard item for event
-        //addGridItemForEvent(newEvent, row);
-        $scope.$emit("addStoryline", newStoryline);
+            //Add storyboard item for event
+            //addGridItemForEvent(newEvent, row);
+            $scope.$emit("addStoryline", newStoryline);
+        }
     };
 
     $scope.deleteStoryline = function(delStoryline) {
-        for(var i=0; i<$scope.options.storyboardEvents.length; i++) {
-            var event = $scope.options.storyboardEvents[i];
+        if($scope.options.enableEditStoylineEvents) {
+            for (var i = 0; i < $scope.options.storyboardEvents.length; i++) {
+                var event = $scope.options.storyboardEvents[i];
 
-            if (event.storylineName == delStoryline) {
-                alert("Cannot delete storyline while any events are still attached to it.  Delete or move any events to another storyline first.");
-                return;
+                if (event.storylineName == delStoryline) {
+                    alert("Cannot delete storyline while any events are still attached to it.  Delete or move any events to another storyline first.");
+                    return;
+                }
             }
-        }
-        var storylineIndex = $scope.storyboardData.storylines.indexOf(delStoryline);
-        if(storylineIndex > -1) {
-            $scope.storyboardData.storylines.splice(storylineIndex, 1);
-            createGridEventObjects();
-            $scope.$emit("deleteStoryline", delStoryline);
+            var storylineIndex = $scope.storyboardData.storylines.indexOf(delStoryline);
+            if (storylineIndex > -1) {
+                $scope.storyboardData.storylines.splice(storylineIndex, 1);
+                createGridEventObjects();
+                $scope.$emit("deleteStoryline", delStoryline);
+            }
         }
     };
 
