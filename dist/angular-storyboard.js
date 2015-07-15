@@ -617,10 +617,12 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "            </div>\n" +
     "\n" +
     "            <!-- Lines -->\n" +
-    "            <div class=\"storyboard_table_container storyboard_table_container_extendable\" ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
+    "            <div class=\"storyboard_table_container \"\n" +
+    "                 ng-class=\"{ 'storyboard_table_container_extendable': options.enableEditStorylines}\"\n" +
+    "                 ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
     "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
     "                    <tr class=\"storyboard_tr\">\n" +
-    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\">\n" +
+    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\" ng-if=\"options.enableEditStorylines\">\n" +
     "                            <div class=\"vertical-text\"><div class=\"vertical-text__inner\">Drag to re-order</div></div>\n" +
     "                            </td>\n" +
     "                        <th class=\"storyboard_th\">\n" +
