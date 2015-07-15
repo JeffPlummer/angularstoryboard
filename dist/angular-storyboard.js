@@ -640,7 +640,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "                        </th>\n" +
     "                    </tr>\n" +
     "                </table>\n" +
-    "                <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\" ng-if=\"$scope.options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
+    "                <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\" ng-if=\"options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
