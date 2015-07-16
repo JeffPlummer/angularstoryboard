@@ -352,7 +352,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
 
             $scope.$emit("addStoryline", newStoryline);
-            $scope.$emit("storyboardItemAdded", newEvent);
+            //$scope.$emit("storyboardItemAdded", newEvent);
         }
     };
 
