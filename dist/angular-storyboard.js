@@ -384,7 +384,7 @@ storyboardModule.directive('options', function() {
         obj.sizeY = 1;
         obj.dragEnabled = false;
         obj.row = (event.storylineName)?$scope.storyboardData.storylines.indexOf(event.storylineName):$scope.storyboardData.storylines.indexOf("_undefined");
-        obj.col = calcStartColumn(obj.event.startDate);
+        obj.col = calcColumnFromDate(obj.event.startDate);
         $scope.storyboardData.gridEvents.push(obj);
     };
 
@@ -392,7 +392,7 @@ storyboardModule.directive('options', function() {
         return Math.floor(endDate.differenceInHours(startDate) / $scope.options.gridSizeInHours);
     };
 
-    var calcStartColumn = function(startdate) {
+    var calcColumnFromDate = function(startdate) {
         var diff = Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)));
         var res = diff / $scope.options.gridSizeInHours;
 
@@ -533,9 +533,12 @@ storyboardModule.directive('options', function() {
             $scope.storyboardData.storylines.push(newStoryline);
 
             //Create new event so gridster will add the row
+            var col = calcColumnFromDate($scope.storyboardData.minViewDate);
+            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
+
             var newEvent = {
-                startDate: $scope.storyboardData.minViewDate,
-                endDate: new Date($scope.storyboardData.minViewDate.getTime() + 1000000),
+                startDate: calcDateFromColumn(col),
+                endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
                 title: "new event",
                 storylineName: newStoryline
             };
@@ -544,8 +547,11 @@ storyboardModule.directive('options', function() {
             $scope.options.storyboardEvents.push(newEvent);
 
             //Add storyboard item for event
-            //addGridItemForEvent(newEvent, row);
+            addGridItemForEvent(newEvent, $scope.storyboardData.storylines.length-1);
+
+
             $scope.$emit("addStoryline", newStoryline);
+            $scope.$emit("storyboardItemAdded", newEvent);
         }
     };
 
