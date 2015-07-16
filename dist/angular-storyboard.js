@@ -582,6 +582,15 @@ storyboardModule.directive('options', function() {
     $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
 
 
+    var onInputStoryboardStorylinesChanged = function(newValue, oldValue) {
+        //Compare to see if things have changed.
+        if( $(newValue).not(oldValue).length === 0 && $(oldValue).not(newValue).length === 0 ) {
+
+        } else {
+            $scope.$emit('triggerRecalculateStoryboard');
+        }
+    };
+    $scope.$watchCollection('options.storylines', onInputStoryboardStorylinesChanged);
 
     $scope.createArray = function(num) {
         return new Array(num);
