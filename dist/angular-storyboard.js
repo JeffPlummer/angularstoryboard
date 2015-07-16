@@ -532,10 +532,14 @@ storyboardModule.directive('options', function() {
             var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
             $scope.storyboardData.storylines.push(newStoryline);
 
+            var col = calcStartColumn($scope.storyboardData.minViewDate);
+            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
+
+
             //Create new event so gridster will add the row
             var newEvent = {
-                startDate: $scope.storyboardData.minViewDate,
-                endDate: new Date($scope.storyboardData.minViewDate.getTime() + 1000000),
+                startDate: calcDateFromColumn(col),
+                endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
                 title: "new event",
                 storylineName: newStoryline
             };
