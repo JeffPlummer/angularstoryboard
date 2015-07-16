@@ -349,7 +349,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             $scope.options.storyboardEvents.push(newEvent);
 
             //Add storyboard item for event
-            //addGridItemForEvent(newEvent, row);
+            addGridItemForEvent(newEvent, $scope.storyboardData.storylines-1);
             $scope.$emit("addStoryline", newStoryline);
         }
     };
