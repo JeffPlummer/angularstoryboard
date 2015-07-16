@@ -96,10 +96,10 @@ storyboardModule.directive('options', function() {
                 ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
         }
 
-        console.log("minDate = " + $scope.storyboardData.minDate);
-        console.log("maxDate = " + $scope.storyboardData.maxDate);
-        console.log("minViewDate = " + $scope.storyboardData.minViewDate);
-        console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
+        //console.log("minDate = " + $scope.storyboardData.minDate);
+        //console.log("maxDate = " + $scope.storyboardData.maxDate);
+        //console.log("minViewDate = " + $scope.storyboardData.minViewDate);
+        //console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
     };
 
     $scope.sliderMouseDown = false;
@@ -113,7 +113,7 @@ storyboardModule.directive('options', function() {
     });
 
     $scope.$on('triggerRecalculateStoryboard', function() {
-        console.log("**************** TRIGGER RE_CALCULATE **************");;
+        //console.log("**************** TRIGGER RE_CALCULATE **************");;
         $scope.initializeStoryboard();
         $scope.$broadcast('recalculateStoryboard');
     });
@@ -144,13 +144,13 @@ storyboardModule.directive('options', function() {
         createTimelineSliderData();
     };
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** slider recalculating");
+        //console.log("***** slider recalculating");
         $scope.initializeSlider()
     });
 
 
     var createTimelineSliderData = function() {
-        console.log("createTimelineSliderData");
+        //console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange = { min: $scope.storyboardData.minViewDate, max: $scope.storyboardData.maxViewDate };
 

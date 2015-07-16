@@ -23,13 +23,13 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
         createTimelineSliderData();
     };
     $scope.$on('recalculateStoryboard', function() {
-        console.log("***** slider recalculating");
+        //console.log("***** slider recalculating");
         $scope.initializeSlider()
     });
 
 
     var createTimelineSliderData = function() {
-        console.log("createTimelineSliderData");
+        //console.log("createTimelineSliderData");
         $scope.timelineSliderOptions.jqOptions.bounds = {min: $scope.storyboardData.minDate, max: $scope.storyboardData.maxDate};
         $scope.timelineSliderOptions.selectedRange = { min: $scope.storyboardData.minViewDate, max: $scope.storyboardData.maxViewDate };
 

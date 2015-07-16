@@ -55,10 +55,10 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
                 ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
         }
 
-        console.log("minDate = " + $scope.storyboardData.minDate);
-        console.log("maxDate = " + $scope.storyboardData.maxDate);
-        console.log("minViewDate = " + $scope.storyboardData.minViewDate);
-        console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
+        //console.log("minDate = " + $scope.storyboardData.minDate);
+        //console.log("maxDate = " + $scope.storyboardData.maxDate);
+        //console.log("minViewDate = " + $scope.storyboardData.minViewDate);
+        //console.log("maxViewDate = " + $scope.storyboardData.maxViewDate);
     };
 
     $scope.sliderMouseDown = false;
@@ -72,7 +72,7 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     });
 
     $scope.$on('triggerRecalculateStoryboard', function() {
-        console.log("**************** TRIGGER RE_CALCULATE **************");;
+        //console.log("**************** TRIGGER RE_CALCULATE **************");;
         $scope.initializeStoryboard();
         $scope.$broadcast('recalculateStoryboard');
     });
