@@ -304,7 +304,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             //Add storyboard item for event
             addGridItemForEvent(newEvent, row);
 
-            $scope.$emit("addStorylineEvent", newEvent);
+            $scope.$emit("storyboardItemAdded", newEvent);
         }
     };
 

@@ -503,7 +503,7 @@ storyboardModule.directive('options', function() {
             //Add storyboard item for event
             addGridItemForEvent(newEvent, row);
 
-            $scope.$emit("addStorylineEvent", newEvent);
+            $scope.$emit("storyboardItemAdded", newEvent);
         }
     };
 
