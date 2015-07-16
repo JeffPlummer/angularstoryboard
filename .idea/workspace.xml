@@ -48,8 +48,8 @@
       <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7809695">
-              <caret line="341" column="78" selection-start-line="341" selection-start-column="78" selection-end-line="341" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.7540395">
+              <caret line="350" column="14" selection-start-line="350" selection-start-column="14" selection-end-line="350" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -908,8 +908,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7809695">
-          <caret line="341" column="78" selection-start-line="341" selection-start-column="78" selection-end-line="341" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.7540395">
+          <caret line="350" column="14" selection-start-line="350" selection-start-column="14" selection-end-line="350" selection-end-column="14" />
           <folding />
         </state>
       </provider>

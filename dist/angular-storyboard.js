@@ -547,7 +547,7 @@ storyboardModule.directive('options', function() {
             $scope.options.storyboardEvents.push(newEvent);
 
             //Add storyboard item for event
-            addGridItemForEvent(newEvent, $scope.storyboardData.storylines.length-1);
+            //addGridItemForEvent(newEvent, $scope.storyboardData.storylines.length-1);
 
 
             $scope.$emit("addStoryline", newStoryline);
