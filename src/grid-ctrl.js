@@ -185,7 +185,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         obj.sizeY = 1;
         obj.dragEnabled = false;
         obj.row = (event.storylineName)?$scope.storyboardData.storylines.indexOf(event.storylineName):$scope.storyboardData.storylines.indexOf("_undefined");
-        obj.col = calcColumnFromDate(obj.event.startDate);
+        obj.col = calcStartColumn(obj.event.startDate);
         $scope.storyboardData.gridEvents.push(obj);
     };
 
@@ -193,7 +193,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         return Math.floor(endDate.differenceInHours(startDate) / $scope.options.gridSizeInHours);
     };
 
-    var calcColumnFromDate = function(startdate) {
+    var calcStartColumn = function(startdate) {
         var diff = Math.floor(( startdate.differenceInHours($scope.storyboardData.minDate)));
         var res = diff / $scope.options.gridSizeInHours;
 
@@ -334,12 +334,9 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             $scope.storyboardData.storylines.push(newStoryline);
 
             //Create new event so gridster will add the row
-            var col = calcColumnFromDate($scope.storyboardData.minViewDate);
-            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
-
             var newEvent = {
-                startDate: calcDateFromColumn(col),
-                endDate: calcDateFromColumn(col+Math.round(visibleColumns/5)),
+                startDate: $scope.storyboardData.minViewDate,
+                endDate: new Date($scope.storyboardData.minViewDate.getTime() + 1000000),
                 title: "new event",
                 storylineName: newStoryline
             };
@@ -348,11 +345,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             $scope.options.storyboardEvents.push(newEvent);
 
             //Add storyboard item for event
-            //addGridItemForEvent(newEvent, $scope.storyboardData.storylines.length-1);
-
-
+            //addGridItemForEvent(newEvent, row);
             $scope.$emit("addStoryline", newStoryline);
-            //$scope.$emit("storyboardItemAdded", newEvent);
         }
     };
 
