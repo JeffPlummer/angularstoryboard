@@ -256,11 +256,11 @@ storyboardModule.directive('options', function() {
         for (var prop in storylinesHashObject) {
             if( (prop != "_undefined") && ($scope.storyboardData.storylines.indexOf(prop) == -1) ) { //Do undefined last
                 $scope.storyboardData.storylines.push(prop);
-                console.log("1. pushing " + prop );
             }
         }
         if(storylinesHashObject._undefined) {
-            $scope.storyboardData.storylines.push("_undefined");
+            if($scope.storyboardData.storylines.indexOf("_undefined") == -1)
+                $scope.storyboardData.storylines.push("_undefined");
         }
     };
 
@@ -532,7 +532,6 @@ storyboardModule.directive('options', function() {
         if($scope.options.enableEditStoylineEvents) {
             var newStoryline = "NewStoryline_" + (Math.random() + 1).toString(36).substring(2, 7);
             $scope.storyboardData.storylines.push(newStoryline);
-            console.log("2.  pushing " + newStoryline);
 
             var col = calcStartColumn($scope.storyboardData.minViewDate);
             var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);

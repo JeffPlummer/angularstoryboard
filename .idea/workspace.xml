@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d9f3bb4a-9840-490d-9c99-66e91a9390e8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.min.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grid-ctrl.js" afterPath="$PROJECT_DIR$/src/grid-ctrl.js" />
     </list>
     <ignored path="angularstoryboard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,26 +45,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="44" />
+            <state vertical-scroll-proportion="-7.1679244">
+              <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular-storyboard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="angular-storyboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/angular-storyboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35906643">
-              <caret line="534" column="55" selection-start-line="534" selection-start-column="55" selection-end-line="534" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="533" column="55" selection-start-line="533" selection-start-column="55" selection-end-line="533" selection-end-column="55" />
               <folding>
-                <marker date="1437086744000" expanded="true" signature="24811:24844" placeholder="..." />
-                <marker date="1437086744000" expanded="true" signature="25164:25183" placeholder="..." />
-                <marker date="1437086744000" expanded="true" signature="27210:27245" placeholder="..." />
-                <marker date="1437086744000" expanded="true" signature="27967:28002" placeholder="..." />
+                <marker date="1437087014000" expanded="true" signature="24784:24817" placeholder="..." />
+                <marker date="1437087014000" expanded="true" signature="25137:25156" placeholder="..." />
+                <marker date="1437087014000" expanded="true" signature="27183:27218" placeholder="..." />
+                <marker date="1437087014000" expanded="true" signature="27940:27975" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -182,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/src/slider-ctrl.js" />
         <option value="$PROJECT_DIR$/src/storyboard-ctrl.js" />
-        <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
         <option value="$PROJECT_DIR$/dist/angular-storyboard.js" />
+        <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
       </list>
     </option>
   </component>
@@ -912,24 +914,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
+    <entry file="file://$PROJECT_DIR$/dist/angular-storyboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="44" />
-          <folding />
+          <caret line="533" column="55" selection-start-line="533" selection-start-column="55" selection-end-line="533" selection-end-column="55" />
+          <folding>
+            <marker date="1437087014000" expanded="true" signature="24784:24817" placeholder="..." />
+            <marker date="1437087014000" expanded="true" signature="25137:25156" placeholder="..." />
+            <marker date="1437087014000" expanded="true" signature="27183:27218" placeholder="..." />
+            <marker date="1437087014000" expanded="true" signature="27940:27975" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/angular-storyboard.js">
+    <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35906643">
-          <caret line="534" column="55" selection-start-line="534" selection-start-column="55" selection-end-line="534" selection-end-column="55" />
-          <folding>
-            <marker date="1437086744000" expanded="true" signature="24811:24844" placeholder="..." />
-            <marker date="1437086744000" expanded="true" signature="25164:25183" placeholder="..." />
-            <marker date="1437086744000" expanded="true" signature="27210:27245" placeholder="..." />
-            <marker date="1437086744000" expanded="true" signature="27967:28002" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-7.1679244">
+          <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -60,7 +60,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
             }
         }
         if(storylinesHashObject._undefined) {
-            $scope.storyboardData.storylines.push("_undefined");
+            if($scope.storyboardData.storylines.indexOf("_undefined") == -1)
+                $scope.storyboardData.storylines.push("_undefined");
         }
     };
 
