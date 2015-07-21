@@ -486,7 +486,7 @@ storyboardModule.directive('options', function() {
         if($scope.options.enableEditStoylineEvents) {
             var grid = document.getElementById('storyboardGrid');
             var xpos, ypos;
-            if(e.offsetX==undefined) // this works for Firefox
+            if(e.offsetX === undefined) // this works for Firefox
             {
                 xpos = e.pageX-$('#canvas').offset().left;
                 ypos = e.pageY-$('#canvas').offset().top;
