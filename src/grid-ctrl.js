@@ -286,17 +286,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
 
         if($scope.options.enableEditStoylineEvents) {
             var grid = document.getElementById('storyboardGrid');
-            var xpos, ypos;
-            if(clickevent.offsetX === undefined) // this works for Firefox
-            {
-                xpos = clickevent.pageX-$('#canvas').offset().left;
-                ypos = clickevent.pageY-$('#canvas').offset().top;
-            }
-            else                     // works in Google Chrome
-            {
-                xpos = clickevent.offsetX;
-                ypos = clickevent.offsetY;
-            }
+            var xpos = clickevent.offsetX === undefined ? clickevent.originalEvent.layerX : clickevent.offsetX;
+            var ypos = clickevent.offsetY === undefined ? clickevent.originalEvent.layerY : clickevent.offsetY;
 
             var row = Math.floor(ypos / 180);
             var col = Math.floor(xpos / ($scope.gridsterOpts.colWidth));
