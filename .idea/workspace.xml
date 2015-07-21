@@ -48,8 +48,8 @@
       <file leaf-file-name="grid-ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25694445">
-              <caret line="289" column="25" selection-start-line="289" selection-start-column="25" selection-end-line="289" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.4652778">
+              <caret line="297" column="33" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -61,10 +61,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="545" column="55" selection-start-line="545" selection-start-column="55" selection-end-line="545" selection-end-column="55" />
               <folding>
-                <marker date="1437443468000" expanded="true" signature="25155:25188" placeholder="..." />
-                <marker date="1437443468000" expanded="true" signature="25508:25527" placeholder="..." />
-                <marker date="1437443468000" expanded="true" signature="27554:27589" placeholder="..." />
-                <marker date="1437443468000" expanded="true" signature="28311:28346" placeholder="..." />
+                <marker date="1437443594000" expanded="true" signature="25200:25233" placeholder="..." />
+                <marker date="1437443594000" expanded="true" signature="25553:25572" placeholder="..." />
+                <marker date="1437443594000" expanded="true" signature="27599:27634" placeholder="..." />
+                <marker date="1437443594000" expanded="true" signature="28356:28391" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -906,10 +906,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="545" column="55" selection-start-line="545" selection-start-column="55" selection-end-line="545" selection-end-column="55" />
           <folding>
-            <marker date="1437443468000" expanded="true" signature="25155:25188" placeholder="..." />
-            <marker date="1437443468000" expanded="true" signature="25508:25527" placeholder="..." />
-            <marker date="1437443468000" expanded="true" signature="27554:27589" placeholder="..." />
-            <marker date="1437443468000" expanded="true" signature="28311:28346" placeholder="..." />
+            <marker date="1437443594000" expanded="true" signature="25200:25233" placeholder="..." />
+            <marker date="1437443594000" expanded="true" signature="25553:25572" placeholder="..." />
+            <marker date="1437443594000" expanded="true" signature="27599:27634" placeholder="..." />
+            <marker date="1437443594000" expanded="true" signature="28356:28391" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -944,8 +944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/grid-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25694445">
-          <caret line="289" column="25" selection-start-line="289" selection-start-column="25" selection-end-line="289" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.4652778">
+          <caret line="297" column="33" selection-start-line="297" selection-start-column="33" selection-end-line="297" selection-end-column="33" />
           <folding />
         </state>
       </provider>
