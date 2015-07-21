@@ -485,8 +485,20 @@ storyboardModule.directive('options', function() {
 
         if($scope.options.enableEditStoylineEvents) {
             var grid = document.getElementById('storyboardGrid');
-            var row = Math.floor(clickevent.offsetY / 180);
-            var col = Math.floor(clickevent.offsetX / ($scope.gridsterOpts.colWidth));
+            var xpos, ypos;
+            if(e.offsetX==undefined) // this works for Firefox
+            {
+                xpos = e.pageX-$('#canvas').offset().left;
+                ypos = e.pageY-$('#canvas').offset().top;
+            }
+            else                     // works in Google Chrome
+            {
+                xpos = e.offsetX;
+                ypos = e.offsetY;
+            }
+
+            var row = Math.floor(ypos / 180);
+            var col = Math.floor(xpos / ($scope.gridsterOpts.colWidth));
 
             var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
 
