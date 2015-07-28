@@ -1,4 +1,4 @@
-angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
+angular.module('storyboard').controller('gridCtrl', function($scope, $document, $timeout) {
 
     $scope.gridWidth = 0;
     $scope.numColumnsLikely = 0;
@@ -224,7 +224,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document) 
         var gridElement = angular.element(document.getElementById('storyboardGridContainer'));
         var xScroll = (viewStart / totalHours)*$scope.gridWidth;
 
-        gridElement.scrollLeft(xScroll);
+        $timeout( function() { gridElement.scrollLeft(xScroll) }, 0);
     };
     var viewBoundsChanged = function() {
         if($scope.sliderMouseDown) {

@@ -91,9 +91,14 @@ storyboardModule.directive('options', function() {
             ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ||
             ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate)
         ){
-            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
+            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
             $scope.storyboardData.maxViewDate = new Date(
-                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
+                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
+                + 1000000).addHours(24*2);
+
+            if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
+                $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+            }
         }
 
         //console.log("minDate = " + $scope.storyboardData.minDate);
@@ -133,7 +138,7 @@ storyboardModule.directive('options', function() {
                 min: {hours: 4}
             },
             step:{
-                hours: 4
+                hours: 1
             }
         },
         selectedRange: {
@@ -197,7 +202,7 @@ storyboardModule.directive('options', function() {
 
 
 
-});;angular.module('storyboard').controller('gridCtrl', function($scope, $document) {
+});;angular.module('storyboard').controller('gridCtrl', function($scope, $document, $timeout) {
 
     $scope.gridWidth = 0;
     $scope.numColumnsLikely = 0;
@@ -423,7 +428,7 @@ storyboardModule.directive('options', function() {
         var gridElement = angular.element(document.getElementById('storyboardGridContainer'));
         var xScroll = (viewStart / totalHours)*$scope.gridWidth;
 
-        gridElement.scrollLeft(xScroll);
+        $timeout( function() { gridElement.scrollLeft(xScroll) }, 0);
     };
     var viewBoundsChanged = function() {
         if($scope.sliderMouseDown) {

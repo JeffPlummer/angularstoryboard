@@ -12,7 +12,7 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
                 min: {hours: 4}
             },
             step:{
-                hours: 4
+                hours: 1
             }
         },
         selectedRange: {

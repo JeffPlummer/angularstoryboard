@@ -50,9 +50,14 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
             ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ||
             ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate)
         ){
-            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate);
+            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
             $scope.storyboardData.maxViewDate = new Date(
-                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime() + 1000000);
+                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
+                + 1000000).addHours(24*2);
+
+            if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
+                $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+            }
         }
 
         //console.log("minDate = " + $scope.storyboardData.minDate);
