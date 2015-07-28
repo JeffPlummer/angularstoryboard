@@ -23,23 +23,6 @@ storyboardModule.directive('storyboard', function() {
             scope.$watch('iAttrs.options.smallStoryboardEventTemplate', function() {
                 //scope.smallStoryboardItemTemplate = iAttrs.options.smallStoryboardEventTemplate;
             });
-
-            scope.renderStoryboard = function() {
-                $scope.$broadcast('triggerRecalculateStoryboard');
-            };
-
-            scope.displayOnce = false;
-            scope.$watch(function() { return elem.is(':visible') }, function() {
-                var visible = elem.is(":visible");
-                if(visible){
-                    if(!scope.displayOnce) {
-                        scope.displayOnce = true;
-                        //elem.empty();
-                        scope.renderStoryboard();
-                    }
-                }
-            });
-
         }
     }
 });
@@ -68,7 +51,6 @@ storyboardModule.directive('options', function() {
 
     $scope.initializeStoryboard = function() {
         initMinMaxDates();
-        //$scope.$broadcast('recalculateStoryboard');
     };
 
 
@@ -134,7 +116,7 @@ storyboardModule.directive('options', function() {
     });
 
     $scope.$on('triggerRecalculateStoryboard', function() {
-        //console.log("**************** TRIGGER RE_CALCULATE **************");;
+        console.log("**************** TRIGGER RE_CALCULATE **************");;
         $scope.initializeStoryboard();
         $scope.$broadcast('recalculateStoryboard');
     });
@@ -165,7 +147,7 @@ storyboardModule.directive('options', function() {
         createTimelineSliderData();
     };
     $scope.$on('recalculateStoryboard', function() {
-        //console.log("***** slider recalculating");
+        console.log("***** slider recalculating");
         $scope.initializeSlider()
     });
 
@@ -247,6 +229,7 @@ storyboardModule.directive('options', function() {
         updateGridBounds();
     };
     $scope.$on('recalculateStoryboard', function() {
+        console.log("**** Recalculate grid");
         $scope.initializeGridAndStorylines();
     });
 

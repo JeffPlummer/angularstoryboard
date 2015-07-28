@@ -23,23 +23,6 @@ storyboardModule.directive('storyboard', function() {
             scope.$watch('iAttrs.options.smallStoryboardEventTemplate', function() {
                 //scope.smallStoryboardItemTemplate = iAttrs.options.smallStoryboardEventTemplate;
             });
-
-            scope.renderStoryboard = function() {
-                $scope.$broadcast('triggerRecalculateStoryboard');
-            };
-
-            scope.displayOnce = false;
-            scope.$watch(function() { return elem.is(':visible') }, function() {
-                var visible = elem.is(":visible");
-                if(visible){
-                    if(!scope.displayOnce) {
-                        scope.displayOnce = true;
-                        //elem.empty();
-                        scope.renderStoryboard();
-                    }
-                }
-            });
-
         }
     }
 });

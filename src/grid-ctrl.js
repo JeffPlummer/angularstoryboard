@@ -27,6 +27,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
         updateGridBounds();
     };
     $scope.$on('recalculateStoryboard', function() {
+        console.log("**** Recalculate grid");
         $scope.initializeGridAndStorylines();
     });
 

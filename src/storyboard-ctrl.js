@@ -11,7 +11,6 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
 
     $scope.initializeStoryboard = function() {
         initMinMaxDates();
-        //$scope.$broadcast('recalculateStoryboard');
     };
 
 
@@ -77,7 +76,7 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
     });
 
     $scope.$on('triggerRecalculateStoryboard', function() {
-        //console.log("**************** TRIGGER RE_CALCULATE **************");;
+        console.log("**************** TRIGGER RE_CALCULATE **************");;
         $scope.initializeStoryboard();
         $scope.$broadcast('recalculateStoryboard');
     });
