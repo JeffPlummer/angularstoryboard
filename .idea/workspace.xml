@@ -4,10 +4,8 @@
     <list default="true" id="d9f3bb4a-9840-490d-9c99-66e91a9390e8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/angular-storyboard.min.js" afterPath="$PROJECT_DIR$/dist/angular-storyboard.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grid-ctrl.js" afterPath="$PROJECT_DIR$/src/grid-ctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/example-ctrl.js" afterPath="$PROJECT_DIR$/example/example-ctrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/storyboard-ctrl.js" afterPath="$PROJECT_DIR$/src/storyboard-ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/templates/storyboard-template.html" afterPath="$PROJECT_DIR$/src/templates/storyboard-template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angularstoryboard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +39,8 @@
       <file leaf-file-name="storyboard-ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/storyboard-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0299003">
-              <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.37375414">
+              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -138,7 +136,7 @@
       <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-9.083333">
               <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding />
             </state>
@@ -159,7 +157,7 @@
         <entry file="file://$PROJECT_DIR$/example/example-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -208,13 +206,13 @@
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/example/example.html" />
         <option value="$PROJECT_DIR$/bower_components/angular-gridster/src/angular-gridster.js" />
-        <option value="$PROJECT_DIR$/example/example-ctrl.js" />
         <option value="$PROJECT_DIR$/src/css/angular-storyboard.css" />
         <option value="$PROJECT_DIR$/src/ngStoryboard.js" />
         <option value="$PROJECT_DIR$/src/slider-ctrl.js" />
         <option value="$PROJECT_DIR$/dist/angular-storyboard.js" />
         <option value="$PROJECT_DIR$/src/templates/storyboard-template.html" />
         <option value="$PROJECT_DIR$/src/grid-ctrl.js" />
+        <option value="$PROJECT_DIR$/example/example-ctrl.js" />
         <option value="$PROJECT_DIR$/src/storyboard-ctrl.js" />
       </list>
     </option>
@@ -792,26 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/example.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/example-ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -847,10 +829,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.083333">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/example-ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/storyboard-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0299003">
-          <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.37375414">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
           <folding />
         </state>
       </provider>

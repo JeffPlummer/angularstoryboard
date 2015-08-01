@@ -81,24 +81,16 @@ storyboardModule.directive('options', function() {
         }
 
         //Add a couple days to before and after to give some room
-        $scope.storyboardData.minDate.setDate($scope.storyboardData.minDate.getDate()-2);
-        $scope.storyboardData.maxDate.setDate($scope.storyboardData.maxDate.getDate() + 2);
+        $scope.storyboardData.minDate.addHours(-2*24);
+        $scope.storyboardData.maxDate.addHours(2*24);
 
-        //Set default view range
-        if ( ($scope.storyboardData.minViewDate == null) ||
-            ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ) {
-            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
-        }
+        $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
+        $scope.storyboardData.maxViewDate = new Date(
+            ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
+            + 1000000).addHours(24*2);
 
-        if ( ($scope.storyboardData.maxViewDate == null) ||
-            ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate) ) {
-            $scope.storyboardData.maxViewDate = new Date(
-                ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
-                + 1000000).addHours(24*2);
-
-            if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
-                $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
-            }
+        if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
+            $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
         }
 
         //console.log("minDate = " + $scope.storyboardData.minDate);
