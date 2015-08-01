@@ -392,7 +392,10 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
             $scope.$emit('triggerRecalculateStoryboard');
         }
     };
-    $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
+    var debounceOnInputStoryboardEventsChanged = function(newValue, oldValue) {
+        _.debounce(500, onInputStoryboardEventsChanged(newValue, oldValue), true);
+    };
+    $scope.$watchCollection('options.storyboardEvents', debounceOnInputStoryboardEventsChanged);
 
 
     var onInputStoryboardStorylinesChanged = function(newValue, oldValue) {

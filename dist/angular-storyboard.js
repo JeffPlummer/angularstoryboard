@@ -86,10 +86,12 @@ storyboardModule.directive('options', function() {
 
         //Set default view range
         if ( ($scope.storyboardData.minViewDate == null) ||
-            ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ||
-            ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate)
-        ){
+            ($scope.storyboardData.minViewDate < $scope.storyboardData.minDate) ) {
             $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
+        }
+
+        if ( ($scope.storyboardData.maxViewDate == null) ||
+            ($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate) ) {
             $scope.storyboardData.maxViewDate = new Date(
                 ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
                 + 1000000).addHours(24*2);
@@ -594,7 +596,10 @@ storyboardModule.directive('options', function() {
             $scope.$emit('triggerRecalculateStoryboard');
         }
     };
-    $scope.$watchCollection('options.storyboardEvents', onInputStoryboardEventsChanged);
+    var debounceOnInputStoryboardEventsChanged = function(newValue, oldValue) {
+        _.debounce(500, onInputStoryboardEventsChanged(newValue, oldValue), true);
+    };
+    $scope.$watchCollection('options.storyboardEvents', debounceOnInputStoryboardEventsChanged);
 
 
     var onInputStoryboardStorylinesChanged = function(newValue, oldValue) {
@@ -618,9 +623,9 @@ storyboardModule.directive('options', function() {
 
 angular.module("storyboard-template.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("storyboard-template.html",
-    "<div ng-controller=\"storyboardCtrl\" ng-init=\"initializeStoryboard()\">\n" +
+    "<div ng-controller=\"storyboardCtrl\" ng-init=\"initializeStoryboard()\" style=\"width: 100%\">\n" +
     "    <!-- Timeline Slider -->\n" +
-    "    <div ng-controller=\"sliderCtrl\" ng-init=\"initializeSlider()\">\n" +
+    "    <div ng-controller=\"sliderCtrl\" ng-init=\"initializeSlider()\" style=\"width: 100%\">\n" +
     "        <div style=\"width: 100%; padding-bottom: 4px;\" >\n" +
     "        <jqrange-slider id=\"jqSlider\" options=\"timelineSliderOptions\"></jqrange-slider>\n" +
     "        </div>\n" +
