@@ -385,6 +385,8 @@ storyboardModule.directive('options', function() {
         obj.row = (event.storylineName)?$scope.storyboardData.storylines.indexOf(event.storylineName):$scope.storyboardData.storylines.indexOf("_undefined");
         obj.col = calcStartColumn(obj.event.startDate);
         $scope.storyboardData.gridEvents.push(obj);
+
+        return obj;
     };
 
     var calcNumColumnsBetweenStartAndEnd = function(startDate, endDate) {
@@ -502,10 +504,15 @@ storyboardModule.directive('options', function() {
             //Add to list of events
             $scope.options.storyboardEvents.push(newEvent);
 
-            //Add storyboard item for event
-            addGridItemForEvent(newEvent, row);
-
             $scope.$emit("storyboardItemAdded", newEvent);
+            
+            //Add storyboard item for event
+            var gridObj = addGridItemForEvent(newEvent, row);
+            if(eventAffectsMinMaxDates(gridObj)) {
+                $scope.$emit('triggerRecalculateStoryboard');
+            }
+
+
         }
     };
 
