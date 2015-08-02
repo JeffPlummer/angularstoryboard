@@ -381,19 +381,18 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
 
 
     var handleAdditions = function(inputEvents, gridEvents) {
-        for(var i=0; i<inputEvents.length; i++) {
-            findIndex = gridEvents.indexOf(inputEvents[i].event);
-            if(!findIndex) {
-                inputEvents.splice(i, 1);
-                break;
-            }
-        }
+        //for(var i=0; i<inputEvents.length; i++) {
+        //    findIndex = gridEvents.indexOf(inputEvents[i]);
+        //    if(findIndex == -1) {
+        //
+        //    }
+        //}
     };
 
     var handleRemovals = function(inputEvents, gridEvents) {
       for(var i=0; i<gridEvents.length; i++) {
           findIndex = inputEvents.indexOf(gridEvents[i].event);
-          if(!findIndex) {
+          if(findIndex == -1) {
               gridEvents.splice(i, 1);
               break;
           }
