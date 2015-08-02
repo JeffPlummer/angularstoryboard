@@ -576,6 +576,26 @@ storyboardModule.directive('options', function() {
     };
 
 
+    var handleAdditions = function(inputEvents, gridEvents) {
+        for(var i=0; i<inputEvents.length; i++) {
+            findIndex = gridEvents.indexOf(inputEvents[i].event);
+            if(!findIndex) {
+                inputEvents.splice(i, 1);
+                break;
+            }
+        }
+    };
+
+    var handleRemovals = function(inputEvents, gridEvents) {
+      for(var i=0; i<gridEvents.length; i++) {
+          findIndex = inputEvents.indexOf(gridEvents[i].event);
+          if(!findIndex) {
+              gridEvents.splice(i, 1);
+              break;
+          }
+      }
+    };
+
     var onInputStoryboardEventsChanged = function(newValue, oldValue) {
         //Create an array of the events attached to grid items
         var gridEvs = $.map($scope.storyboardData.gridEvents, function(val, i) {
@@ -585,7 +605,8 @@ storyboardModule.directive('options', function() {
         if( $($scope.options.storyboardEvents).not(gridEvs).length === 0 && $(gridEvs).not($scope.options.storyboardEvents).length === 0 ) {
 
         } else {
-            $scope.$emit('triggerRecalculateStoryboard');
+            handleAdditions($scope.options.storyboardEvents, $scope.storyboardData.gridEvents);
+            handleRemovals($scope.options.storyboardEvents, $scope.storyboardData.gridEvents);
         }
     };
     var debounceOnInputStoryboardEventsChanged = function(newValue, oldValue) {
