@@ -505,7 +505,7 @@ storyboardModule.directive('options', function() {
             $scope.options.storyboardEvents.push(newEvent);
 
             $scope.$emit("storyboardItemAdded", newEvent);
-            
+
             //Add storyboard item for event
             var gridObj = addGridItemForEvent(newEvent, row);
             if(eventAffectsMinMaxDates(gridObj)) {
