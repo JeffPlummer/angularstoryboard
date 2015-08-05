@@ -135,6 +135,7 @@ storyboardModule.directive('options', function() {
             formatter: function(value){
                 return moment(value).format('LLL')
             },
+            valueLabels: "hide",
             range:{
                 min: {hours: 4}
             },

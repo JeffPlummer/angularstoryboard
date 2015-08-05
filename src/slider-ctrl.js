@@ -8,6 +8,7 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
             formatter: function(value){
                 return moment(value).format('LLL')
             },
+            valueLabels: "hide",
             range:{
                 min: {hours: 4}
             },
