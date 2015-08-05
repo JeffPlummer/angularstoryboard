@@ -644,51 +644,15 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
   $templateCache.put("storyboard-template.html",
     "<div ng-controller=\"storyboardCtrl\" ng-init=\"initializeStoryboard()\" style=\"width: 100%\">\n" +
     "    <!-- Timeline Slider -->\n" +
-    "    <div ng-controller=\"sliderCtrl\" ng-init=\"initializeSlider()\" style=\"width: 100%\">\n" +
     "        <div style=\"width: 100%; padding-bottom: 4px;\" >\n" +
     "        <jqrange-slider id=\"jqSlider\" options=\"timelineSliderOptions\"></jqrange-slider>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
-    "    <!-- story lines -->\n" +
-    "    <div ng-controller=\"gridCtrl\" ng-init=\"initializeGridAndStorylines()\" >\n" +
-    "        <div style=\"position: relative;\">\n" +
     "\n" +
-    "            <!-- Grid -->\n" +
-    "            <div id=\"storyboardGridContainer\" class=\"storyboardContains\" >\n" +
-    "                <div id=\"storyboardGrid\" class=\"storyboardGrid\"  ng-style=\"{width: gridWidth}\" gridster=\"gridsterOpts\"  ng-dblClick=\"doubleClick($event)\">\n" +
-    "                    <ul>\n" +
-    "                        <li gridster-item=\"item\" ng-repeat=\"item in storyboardData.gridEvents\">\n" +
-    "                            <div ng-if=\"showGridEventInView(item)\" class=\"eventStoryboardItem\">\n" +
-    "                                <div ng-include=\"options.storyboardItemTemplate\"></div>\n" +
-    "                            </div>\n" +
-    "                            <div ng-if=\"!showGridEventInView(item)\">\n" +
-    "                                <div ng-include=\"options.smallStoryboardItemTemplate\"></div>\n" +
-    "                            </div>\n" +
-    "                        </li>\n" +
-    "                    </ul>\n" +
     "                </div>\n" +
-    "            </div>\n" +
     "\n" +
-    "            <!-- Lines -->\n" +
-    "            <div class=\"storyboard_table_container \"\n" +
-    "                 ng-class=\"{ 'storyboard_table_container_extendable': options.enableEditStorylines}\"\n" +
-    "                 ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
-    "                <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
-    "                    <tr class=\"storyboard_tr\">\n" +
-    "                        <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\" ng-if=\"options.enableEditStorylines\">\n" +
-    "                            <div class=\"vertical-text\"><div class=\"vertical-text__inner\">Drag to re-order</div></div>\n" +
     "                            </td>\n" +
-    "                        <th class=\"storyboard_th\">\n" +
-    "                            <span style=\"z-index: 100; pointer-events: auto;\" ng-if=\"options.enableEditStorylines\">\n" +
-    "                                <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
-    "                                <button class=\"btn btn-danger btn-xs\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
-    "                            </span>\n" +
-    "                            <label ng-if=\"!options.enableEditStorylines\">{{storyline}}</label>\n" +
-    "                        </th>\n" +
-    "                    </tr>\n" +
-    "                </table>\n" +
-    "                <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\" ng-if=\"options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +

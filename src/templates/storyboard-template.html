@@ -1,54 +1,72 @@
 <div ng-controller="storyboardCtrl" ng-init="initializeStoryboard()" style="width: 100%">
+
     <!-- Timeline Slider -->
-    <div ng-controller="sliderCtrl" ng-init="initializeSlider()" style="width: 100%">
+    <div ng-controller="sliderCtrl" ng-init="initializeSlider()" style="width: 100%" >
         <div style="width: 100%; padding-bottom: 4px;" >
         <jqrange-slider id="jqSlider" options="timelineSliderOptions"></jqrange-slider>
         </div>
     </div>
 
-    <!-- story lines -->
-    <div ng-controller="gridCtrl" ng-init="initializeGridAndStorylines()" >
-        <div style="position: relative;">
-
-            <!-- Grid -->
-            <div id="storyboardGridContainer" class="storyboardContains" >
-                <div id="storyboardGrid" class="storyboardGrid"  ng-style="{width: gridWidth}" gridster="gridsterOpts"  ng-dblClick="doubleClick($event)">
-                    <ul>
-                        <li gridster-item="item" ng-repeat="item in storyboardData.gridEvents">
-                            <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">
-                                <div ng-include="options.storyboardItemTemplate"></div>
-                            </div>
-                            <div ng-if="!showGridEventInView(item)">
-                                <div ng-include="options.smallStoryboardItemTemplate"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Lines -->
-            <div class="storyboard_table_container "
-                 ng-class="{ 'storyboard_table_container_extendable': options.enableEditStorylines}"
-                 ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
-                <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
-                    <tr class="storyboard_tr">
-                        <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines" ng-if="options.enableEditStorylines">
-                            <div class="vertical-text"><div class="vertical-text__inner">Drag to re-order</div></div>
-                            </td>
-                        <th class="storyboard_th">
-                            <span style="z-index: 100; pointer-events: auto;" ng-if="options.enableEditStorylines">
-                                <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>
-                                <button class="btn btn-danger btn-xs" ng-click="deleteStoryline(storyline)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            </span>
-                            <label ng-if="!options.enableEditStorylines">{{storyline}}</label>
-                        </th>
-                    </tr>
-                </table>
-                <button style="z-index: 100; pointer-events: auto;" ng-click="addStoryline()" ng-if="options.enableEditStoylineEvents">Add New Storyline</button>
-            </div>
-
-        </div>
+    <!-- Too Large for Grid -->
+    <div ng-if="!displayGrid">
+        <h1>I'm afraid your timeline spans too much time to display on the storyboard.</h1>
+        If the first event is more than 3 years apart from the last event it will crash the browser.  We are working to fix the issue.
+        Please bear with us.
+        <p></p>
+        In the mean time, we recommend you ignore the "dates" we've implemented, and place story events near each other so you can easily work with them.
+        Add big bold text with the "desired date" on your event description, and voila your timeline will still look correct.  If your event says
+        1492, people will see 1492 rather than what the timeline slider shows.
+        <p></p>
+        I am considering removing time units all together as fantasy and sci-fi genre's don't use our calendar.  Instead, events
+        would exist spatially on the storyboard, but nothing will say that a grid is 1 hour, or that it is August 2015.
     </div>
+
+    <!--<div style="width: 100%" ng-if="displayGrid">-->
+        <!-- story lines -->
+        <div ng-controller="gridCtrl" ng-init="initializeGridAndStorylines()" ng-if="displayGrid" style="height: 100%">
+            <div style="position: relative;">
+
+                <!-- Grid -->
+                <div id="storyboardGridContainer" class="storyboardContains" >
+                    <div id="storyboardGrid" class="storyboardGrid"  ng-style="{width: gridWidth}" gridster="gridsterOpts"  ng-dblClick="doubleClick($event)">
+                        <ul>
+                            <li gridster-item="item" ng-repeat="item in storyboardData.gridEvents">
+                                <div ng-if="showGridEventInView(item)" class="eventStoryboardItem">
+                                    <div ng-include="options.storyboardItemTemplate"></div>
+                                </div>
+                                <div ng-if="!showGridEventInView(item)">
+                                    <div ng-include="options.smallStoryboardItemTemplate"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lines -->
+                <div class="storyboard_table_container "
+                     ng-class="{ 'storyboard_table_container_extendable': options.enableEditStorylines}"
+                     ui-sortable="sortableOptions" ng-model="storyboardData.storylines">
+                    <table class="storyboard_table" ng-repeat="storyline in storyboardData.storylines">
+                        <tr class="storyboard_tr">
+                            <td class="storyboard-drag-reorder-cell" title="Drag to reorder storylines" ng-if="options.enableEditStorylines">
+                                <div class="vertical-text"><div class="vertical-text__inner">Drag to re-order</div></div>
+                                </td>
+                            <th class="storyboard_th">
+                                <span style="z-index: 100; pointer-events: auto;" ng-if="options.enableEditStorylines">
+                                    <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>
+                                    <button class="btn btn-danger btn-xs" ng-click="deleteStoryline(storyline)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                </span>
+                                <label ng-if="!options.enableEditStorylines">{{storyline}}</label>
+                            </th>
+                        </tr>
+                    </table>
+                    <button style="z-index: 100; pointer-events: auto;" ng-click="addStoryline()" ng-if="options.enableEditStoylineEvents">Add New Storyline</button>
+                </div>
+
+            </div>
+        </div>
+
+    <!--</div>-->
 
 </div>
 

@@ -9,6 +9,8 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         gridEvents:[]
     };
 
+    $scope.displayGrid = false;
+
     $scope.initializeStoryboard = function() {
         initMinMaxDates();
     };
@@ -44,13 +46,20 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         $scope.storyboardData.minDate.addHours(-2*24);
         $scope.storyboardData.maxDate.addHours(2*24);
 
+        var timelineInHours = ($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate));
+        var fifthOfTimeline = Math.floor(timelineInHours/5);
+
         $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
-        $scope.storyboardData.maxViewDate = new Date(
-            ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
-            + 1000000).addHours(24*2);
+        $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minDate).addHours(fifthOfTimeline + (24*2));
+
 
         if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
             $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+        }
+
+        var timelineInYears = ($scope.storyboardData.maxDate.differenceInYears($scope.storyboardData.minDate));
+        if(timelineInYears <= 3) {
+            $scope.displayGrid = true;
         }
 
         //console.log("minDate = " + $scope.storyboardData.minDate);
