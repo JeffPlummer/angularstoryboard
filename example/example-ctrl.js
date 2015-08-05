@@ -8,7 +8,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
     $scope.myOptions.enableEditStoylineEvents = true;
     $scope.myOptions.storyboardEvents = [
         {
-            startDate: new Date(2012,0,8,12),
+            startDate: new Date(2022,0,8,12),
             endDate: new Date(2022, 0, 8, 16 ),
             title: "Item1",
             text: "Hello this is a test",
