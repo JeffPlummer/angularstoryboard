@@ -1,0 +1,110 @@
+.storyboardContains {
+    z-index: 10;
+    margin-left: 24px;
+    margin-right: 2px;
+    overflow-x: auto;
+}
+
+.storyboardGrid {
+
+}
+
+.storylineRow {
+    width: 100%;
+    border-top-style: dotted;
+    border-top-width: 1px;
+}
+
+.storyboard_table_container {
+    /*background: url('../img/additembg.png') no-repeat 50% 20px;*/
+    z-index: 1;
+    width: 100%;
+    overflow-x: auto;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    pointer-events: none;
+}
+
+/*.storyboard_table_container_extendable {*/
+
+/*}*/
+
+.storyboard_table {
+    width: 100%;
+    z-index: 10;
+    cellspacing: 0px;
+    cellpadding: 0px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    vertical-align: top;
+    pointer-events: none;
+    height: 180px;
+}
+
+.highlight {
+    border: 1px solid red;
+    /*font-weight: bold;*/
+    /*font-size: 45px;*/
+    background-color: lightblue;
+    height: 180px;
+}
+
+.dragplaceholder {
+    height: 180px;
+    background-color: gainsboro;
+}
+
+
+
+.storyboard_tr {
+
+
+}
+
+.storyboard_th {
+    vertical-align: top;
+    text-align: center;
+}
+
+.storyboard-drag-reorder-cell {
+    border: 1px solid black;
+    width: 20px;
+    z-index: 100;
+    pointer-events: auto;
+    cursor: move;
+
+}
+
+.vertical-text {
+    display: inline-block;
+    overflow: hidden;
+    width: 1.5em;
+}
+.vertical-text__inner {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1.5;
+    /*transform: translate(0,100%) rotate(-90deg);*/
+    /*transform-origin: 0 0;*/
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.vertical-text__inner:after {
+    content: "";
+    display: block;
+    margin: -1.5em 0 100%;
+}
+
+a.editable-click {
+    color: green;
+    border-bottom: none 2px green;
+}
+a.editable-click:hover {
+    color: #47a447;
+    /*border-bottom-color: #47a447;*/
+}
