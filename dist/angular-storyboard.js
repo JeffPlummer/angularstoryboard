@@ -49,6 +49,8 @@ storyboardModule.directive('options', function() {
         gridEvents:[]
     };
 
+    $scope.displayGrid = false;
+
     $scope.initializeStoryboard = function() {
         initMinMaxDates();
     };
@@ -84,13 +86,20 @@ storyboardModule.directive('options', function() {
         $scope.storyboardData.minDate.addHours(-2*24);
         $scope.storyboardData.maxDate.addHours(2*24);
 
+        var timelineInHours = ($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate));
+        var fifthOfTimeline = Math.floor(timelineInHours/5);
+
         $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
-        $scope.storyboardData.maxViewDate = new Date(
-            ($scope.storyboardData.maxDate - $scope.storyboardData.minDate) / 5 + $scope.storyboardData.minDate.getTime()
-            + 1000000).addHours(24*2);
+        $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minDate).addHours(fifthOfTimeline + (24*2));
+
 
         if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
             $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+        }
+
+        var timelineInYears = ($scope.storyboardData.maxDate.differenceInYears($scope.storyboardData.minDate));
+        if(timelineInYears <= 3) {
+            $scope.displayGrid = true;
         }
 
         //console.log("minDate = " + $scope.storyboardData.minDate);
@@ -643,20 +652,74 @@ storyboardModule.directive('options', function() {
 angular.module("storyboard-template.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("storyboard-template.html",
     "<div ng-controller=\"storyboardCtrl\" ng-init=\"initializeStoryboard()\" style=\"width: 100%\">\n" +
+    "\n" +
     "    <!-- Timeline Slider -->\n" +
+    "    <div ng-controller=\"sliderCtrl\" ng-init=\"initializeSlider()\" style=\"width: 100%\" >\n" +
     "        <div style=\"width: 100%; padding-bottom: 4px;\" >\n" +
     "        <jqrange-slider id=\"jqSlider\" options=\"timelineSliderOptions\"></jqrange-slider>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
+    "    <!-- Too Large for Grid -->\n" +
+    "    <div ng-if=\"!displayGrid\">\n" +
+    "        <h1>I'm afraid your timeline spans too much time to display on the storyboard.</h1>\n" +
+    "        If the first event is more than 3 years apart from the last event it will crash the browser.  We are working to fix the issue.\n" +
+    "        Please bear with us.\n" +
+    "        <p></p>\n" +
+    "        In the mean time, we recommend you ignore the \"dates\" we've implemented, and place story events near each other so you can easily work with them.\n" +
+    "        Add big bold text with the \"desired date\" on your event description, and voila your timeline will still look correct.  If your event says\n" +
+    "        1492, people will see 1492 rather than what the timeline slider shows.\n" +
+    "        <p></p>\n" +
+    "        I am considering removing time units all together as fantasy and sci-fi genre's don't use our calendar.  Instead, events\n" +
+    "        would exist spatially on the storyboard, but nothing will say that a grid is 1 hour, or that it is August 2015.\n" +
+    "    </div>\n" +
     "\n" +
+    "    <!--<div style=\"width: 100%\" ng-if=\"displayGrid\">-->\n" +
+    "        <!-- story lines -->\n" +
+    "        <div ng-controller=\"gridCtrl\" ng-init=\"initializeGridAndStorylines()\" ng-if=\"displayGrid\" style=\"height: 100%\">\n" +
+    "            <div style=\"position: relative;\">\n" +
+    "\n" +
+    "                <!-- Grid -->\n" +
+    "                <div id=\"storyboardGridContainer\" class=\"storyboardContains\" >\n" +
+    "                    <div id=\"storyboardGrid\" class=\"storyboardGrid\"  ng-style=\"{width: gridWidth}\" gridster=\"gridsterOpts\"  ng-dblClick=\"doubleClick($event)\">\n" +
+    "                        <ul>\n" +
+    "                            <li gridster-item=\"item\" ng-repeat=\"item in storyboardData.gridEvents\">\n" +
+    "                                <div ng-if=\"showGridEventInView(item)\" class=\"eventStoryboardItem\">\n" +
+    "                                    <div ng-include=\"options.storyboardItemTemplate\"></div>\n" +
+    "                                </div>\n" +
+    "                                <div ng-if=\"!showGridEventInView(item)\">\n" +
+    "                                    <div ng-include=\"options.smallStoryboardItemTemplate\"></div>\n" +
+    "                                </div>\n" +
+    "                            </li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "\n" +
-    "                            </td>\n" +
-    "            </div>\n" +
+    "                <!-- Lines -->\n" +
+    "                <div class=\"storyboard_table_container \"\n" +
+    "                     ng-class=\"{ 'storyboard_table_container_extendable': options.enableEditStorylines}\"\n" +
+    "                     ui-sortable=\"sortableOptions\" ng-model=\"storyboardData.storylines\">\n" +
+    "                    <table class=\"storyboard_table\" ng-repeat=\"storyline in storyboardData.storylines\">\n" +
+    "                        <tr class=\"storyboard_tr\">\n" +
+    "                            <td class=\"storyboard-drag-reorder-cell\" title=\"Drag to reorder storylines\" ng-if=\"options.enableEditStorylines\">\n" +
+    "                                <div class=\"vertical-text\"><div class=\"vertical-text__inner\">Drag to re-order</div></div>\n" +
+    "                                </td>\n" +
+    "                            <th class=\"storyboard_th\">\n" +
+    "                                <span style=\"z-index: 100; pointer-events: auto;\" ng-if=\"options.enableEditStorylines\">\n" +
+    "                                    <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
+    "                                    <button class=\"btn btn-danger btn-xs\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
+    "                                </span>\n" +
+    "                                <label ng-if=\"!options.enableEditStorylines\">{{storyline}}</label>\n" +
+    "                            </th>\n" +
+    "                        </tr>\n" +
+    "                    </table>\n" +
+    "                    <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\" ng-if=\"options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
+    "                </div>\n" +
     "\n" +
+    "            </div>\n" +
     "        </div>\n" +
-    "    </div>\n" +
+    "\n" +
+    "    <!--</div>-->\n" +
     "\n" +
     "</div>\n" +
     "\n" +
@@ -664,6 +727,12 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
 }]);
 ;var ONE_HOUR_IN_MILLIS = 60*60*1000;
 var ONE_DAY_IN_MILLIS = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+
+Date.prototype.differenceInYears = function(obj) {
+    var diffDays = Math.round(Math.abs((this.getTime() - obj.getTime())/(ONE_DAY_IN_MILLIS)));
+    var diffYears = Math.ceil(diffDays/366);
+    return diffYears;
+};
 
 Date.prototype.differenceInDays = function(obj) {
     var diffDays = Math.round(Math.abs((this.getTime() - obj.getTime())/(ONE_DAY_IN_MILLIS)));
