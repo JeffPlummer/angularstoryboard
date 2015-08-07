@@ -108,3 +108,16 @@ a.editable-click:hover {
     color: #47a447;
     /*border-bottom-color: #47a447;*/
 }
+
+.ui-rangeSlider-handle{
+    width: 30px;
+    background-color: red;
+}
+
+.ui-rangeSlider-leftHandle {
+    border-radius: 15px 0 0 15px;
+}
+
+.ui-rangeSlider-rightHandle {
+    border-radius: 0 15px 15px 0;
+}

@@ -14,7 +14,10 @@ angular.module('storyboard').controller('sliderCtrl', function($scope) {
             },
             step:{
                 hours: 1
-            }
+            },
+            symmetricPositionning: true,
+            range: {min: 0}
+
         },
         selectedRange: {
         }

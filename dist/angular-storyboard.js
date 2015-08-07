@@ -141,7 +141,10 @@ storyboardModule.directive('options', function() {
             },
             step:{
                 hours: 1
-            }
+            },
+            symmetricPositionning: true,
+            range: {min: 0}
+
         },
         selectedRange: {
         }
