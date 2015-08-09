@@ -21,7 +21,7 @@ angular.module('example').controller('exampleCtrl', function($scope) {
             title: "Item2",
             text: "World",
             image: "http://www.dogtrainingnation.com/wp-content/uploads/2015/02/iStock_000016265624_Large.jpg",
-            storylineName: "story2"
+            storylineName: "story1"
         }//,
         //{
         //    startDate: new Date(2015,0,1,12,0),
