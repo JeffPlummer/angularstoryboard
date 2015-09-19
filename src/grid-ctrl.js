@@ -103,6 +103,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
         mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
         resizable: {
             enabled: true,
+            handles: ['e', 'w'],
             start: function(event, uiWidget, $element) {}, // optional callback fired when resize is started,
             resize: function(event, uiWidget, $element) {}, // optional callback fired when item is resized,
             stop: function(event, uiWidget, $element) {onElementResized($element);} // optional callback fired when item is finished resizing

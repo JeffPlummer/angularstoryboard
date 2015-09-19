@@ -38,7 +38,7 @@
                         <th class="storyboard_th">
                             <span style="z-index: 100; pointer-events: auto;" ng-if="options.enableEditStorylines">
                                 <a href="#" editable-text="storyline" onbeforesave="updateStorylineName(storyline, $data)">{{ storyline || 'empty' }}</a>
-                                <button class="btn btn-danger btn-xs" ng-click="deleteStoryline(storyline)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                <button class="btn btn-danger btn-xs btn-remove-storyline" ng-click="deleteStoryline(storyline)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                             </span>
                             <label ng-if="!options.enableEditStorylines">{{storyline}}</label>
                         </th>

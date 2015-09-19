@@ -312,6 +312,7 @@ storyboardModule.directive('options', function() {
         mobileBreakPoint: 600, // if the screen is not wider that this, remove the grid layout and stack the items
         resizable: {
             enabled: true,
+            handles: ['e', 'w'],
             start: function(event, uiWidget, $element) {}, // optional callback fired when resize is started,
             resize: function(event, uiWidget, $element) {}, // optional callback fired when item is resized,
             stop: function(event, uiWidget, $element) {onElementResized($element);} // optional callback fired when item is finished resizing
@@ -695,7 +696,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "                        <th class=\"storyboard_th\">\n" +
     "                            <span style=\"z-index: 100; pointer-events: auto;\" ng-if=\"options.enableEditStorylines\">\n" +
     "                                <a href=\"#\" editable-text=\"storyline\" onbeforesave=\"updateStorylineName(storyline, $data)\">{{ storyline || 'empty' }}</a>\n" +
-    "                                <button class=\"btn btn-danger btn-xs\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
+    "                                <button class=\"btn btn-danger btn-xs btn-remove-storyline\" ng-click=\"deleteStoryline(storyline)\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\n" +
     "                            </span>\n" +
     "                            <label ng-if=\"!options.enableEditStorylines\">{{storyline}}</label>\n" +
     "                        </th>\n" +

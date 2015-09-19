@@ -121,3 +121,9 @@ a.editable-click:hover {
 .ui-rangeSlider-rightHandle {
     border-radius: 0 15px 15px 0;
 }
+
+.btn-remove-storyline {
+    height: 16px;
+    padding: 0px 0px;
+    line-height: normal;
+}
