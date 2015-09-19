@@ -659,7 +659,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "<div ng-controller=\"storyboardCtrl\" ng-init=\"initializeStoryboard()\" style=\"width: 100%\">\n" +
     "    <!-- Timeline Slider -->\n" +
     "    <div ng-controller=\"sliderCtrl\" ng-init=\"initializeSlider()\" style=\"width: 100%\">\n" +
-    "        <div style=\"width: 100%; padding-bottom: 4px;\" >\n" +
+    "        <div style=\"width: 100%; padding-bottom: 1px;\" >\n" +
     "        <jqrange-slider id=\"jqSlider\" options=\"timelineSliderOptions\"></jqrange-slider>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -702,7 +702,7 @@ angular.module("storyboard-template.html", []).run(["$templateCache", function($
     "                        </th>\n" +
     "                    </tr>\n" +
     "                </table>\n" +
-    "                <button style=\"z-index: 100; pointer-events: auto;\" ng-click=\"addStoryline()\" ng-if=\"options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
+    "                <button class=\"btn-add-storyline\" ng-click=\"addStoryline()\" ng-if=\"options.enableEditStoylineEvents\">Add New Storyline</button>\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +

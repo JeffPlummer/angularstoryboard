@@ -1,7 +1,7 @@
 <div ng-controller="storyboardCtrl" ng-init="initializeStoryboard()" style="width: 100%">
     <!-- Timeline Slider -->
     <div ng-controller="sliderCtrl" ng-init="initializeSlider()" style="width: 100%">
-        <div style="width: 100%; padding-bottom: 4px;" >
+        <div style="width: 100%; padding-bottom: 1px;" >
         <jqrange-slider id="jqSlider" options="timelineSliderOptions"></jqrange-slider>
         </div>
     </div>
@@ -44,7 +44,7 @@
                         </th>
                     </tr>
                 </table>
-                <button style="z-index: 100; pointer-events: auto;" ng-click="addStoryline()" ng-if="options.enableEditStoylineEvents">Add New Storyline</button>
+                <button class="btn-add-storyline" ng-click="addStoryline()" ng-if="options.enableEditStoylineEvents">Add New Storyline</button>
             </div>
 
         </div>

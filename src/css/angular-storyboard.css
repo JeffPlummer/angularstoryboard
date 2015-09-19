@@ -35,11 +35,14 @@
     z-index: 10;
     cellspacing: 0px;
     cellpadding: 0px;
-    border: 1px solid black;
     border-collapse: collapse;
     vertical-align: top;
     pointer-events: none;
     height: 180px;
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .highlight {
@@ -68,11 +71,15 @@
 }
 
 .storyboard-drag-reorder-cell {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 20px;
     z-index: 100;
     pointer-events: auto;
     cursor: move;
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 
 }
 
@@ -126,4 +133,9 @@ a.editable-click:hover {
     height: 16px;
     padding: 0px 0px;
     line-height: normal;
+}
+
+.btn-add-storyline {
+    z-index: 100;
+    pointer-events: auto;
 }
