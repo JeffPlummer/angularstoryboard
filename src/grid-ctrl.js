@@ -286,6 +286,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
     var debounceHandleScroll = _.debounce(handleScroll, 1);
 
 
+
     $scope.doubleClick = function(clickevent) {
 
         if($scope.options.enableEditStoylineEvents) {
@@ -296,7 +297,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
             var row = Math.floor(ypos / 180);
             var col = Math.floor(xpos / ($scope.gridsterOpts.colWidth));
 
-            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate)
+            var visibleColumns=calcNumColumnsBetweenStartAndEnd($scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
 
             //Create new event
             var newEvent = {
@@ -314,10 +315,8 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
             //Add storyboard item for event
             var gridObj = addGridItemForEvent(newEvent, row);
             if(eventAffectsMinMaxDates(gridObj)) {
-                $scope.$emit('triggerRecalculateStoryboard');
+                $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate);
             }
-
-
         }
     };
 

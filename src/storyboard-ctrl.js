@@ -11,12 +11,12 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
 
     $scope.displayGrid = false;
 
-    $scope.initializeStoryboard = function() {
-        initMinMaxDates();
+    $scope.initializeStoryboard = function(viewStartDate) {
+        initMinMaxDates(viewStartDate);
     };
 
 
-    var initMinMaxDates = function() {
+    var initMinMaxDates = function(viewStartDate) {
         var len = $scope.options.storyboardEvents.length;
         if (len >0) {
             for (var i = 0; i < len; i++) {
@@ -49,8 +49,14 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         var timelineInHours = ($scope.storyboardData.maxDate.differenceInHours($scope.storyboardData.minDate));
         var fifthOfTimeline = Math.floor(timelineInHours/5);
 
-        $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
-        $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minDate).addHours(fifthOfTimeline + (24*2));
+        if(viewStartDate) {
+            $scope.storyboardData.minViewDate = viewStartDate;
+        }
+        else {
+            $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
+        }
+
+        $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minViewDate).addHours(fifthOfTimeline + (24*2));
 
 
         if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
@@ -78,9 +84,9 @@ angular.module('storyboard').controller('storyboardCtrl', function($scope) {
         $scope.sliderMouseDown = false;
     });
 
-    $scope.$on('triggerRecalculateStoryboard', function() {
-        console.log("**************** TRIGGER RE_CALCULATE **************");;
-        $scope.initializeStoryboard();
+    $scope.$on('triggerRecalculateStoryboard', function(event, desiredViewStartDate) {
+        console.log("**************** TRIGGER RE_CALCULATE **************");
+        $scope.initializeStoryboard(desiredViewStartDate);
         $scope.$broadcast('recalculateStoryboard');
     });
 
