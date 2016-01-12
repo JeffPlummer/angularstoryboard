@@ -4,3 +4,5 @@ src/templates/*.js
 lib/
 temp/
 
+
+.idea/workspace.xml
