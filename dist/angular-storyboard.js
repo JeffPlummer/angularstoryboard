@@ -101,7 +101,7 @@ storyboardModule.directive('options', function() {
         }
         else {
             $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minViewDate).addHours(fifthOfTimeline + (24*2));
-            
+
             if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
                 $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
             }
