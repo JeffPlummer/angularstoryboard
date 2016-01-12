@@ -51,12 +51,12 @@ storyboardModule.directive('options', function() {
 
     $scope.displayGrid = false;
 
-    $scope.initializeStoryboard = function(viewStartDate) {
-        initMinMaxDates(viewStartDate);
+    $scope.initializeStoryboard = function(viewStartDate, viewEndDate) {
+        initMinMaxDates(viewStartDate, viewEndDate);
     };
 
 
-    var initMinMaxDates = function(viewStartDate) {
+    var initMinMaxDates = function(viewStartDate, viewEndDate) {
         var len = $scope.options.storyboardEvents.length;
         if (len >0) {
             for (var i = 0; i < len; i++) {
@@ -96,12 +96,17 @@ storyboardModule.directive('options', function() {
             $scope.storyboardData.minViewDate = new Date($scope.storyboardData.minDate).addHours(24*2);
         }
 
-        $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minViewDate).addHours(fifthOfTimeline + (24*2));
-
-
-        if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
-            $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+        if(viewEndDate) {
+            $scope.storyboardData.maxViewDate = viewEndDate;
         }
+        else {
+            $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.minViewDate).addHours(fifthOfTimeline + (24*2));
+            
+            if($scope.storyboardData.maxViewDate > $scope.storyboardData.maxDate ) {
+                $scope.storyboardData.maxViewDate = new Date($scope.storyboardData.maxDate);
+            }
+        }
+
 
         var timelineInYears = ($scope.storyboardData.maxDate.differenceInYears($scope.storyboardData.minDate));
         if(timelineInYears <= 3) {
@@ -124,9 +129,9 @@ storyboardModule.directive('options', function() {
         $scope.sliderMouseDown = false;
     });
 
-    $scope.$on('triggerRecalculateStoryboard', function(event, desiredViewStartDate) {
+    $scope.$on('triggerRecalculateStoryboard', function(event, desiredViewStartDate, desiredViewEndDate) {
         console.log("**************** TRIGGER RE_CALCULATE **************");
-        $scope.initializeStoryboard(desiredViewStartDate);
+        $scope.initializeStoryboard(desiredViewStartDate, desiredViewEndDate);
         $scope.$broadcast('recalculateStoryboard');
     });
 
@@ -530,7 +535,7 @@ storyboardModule.directive('options', function() {
             //Add storyboard item for event
             var gridObj = addGridItemForEvent(newEvent, row);
             if(eventAffectsMinMaxDates(gridObj)) {
-                $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate);
+                $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
             }
         }
     };

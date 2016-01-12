@@ -315,7 +315,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
             //Add storyboard item for event
             var gridObj = addGridItemForEvent(newEvent, row);
             if(eventAffectsMinMaxDates(gridObj)) {
-                $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate);
+                $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
             }
         }
     };
