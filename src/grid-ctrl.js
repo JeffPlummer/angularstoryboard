@@ -140,7 +140,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
 
         //If column is near first or last, need to re-adjust min/max dates of storyboard as a whole
         if(eventAffectsMinMaxDates(changedElement)) {
-            $scope.$emit('triggerRecalculateStoryboard');
+            $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
         }
 
         $scope.$emit("storyboardItemMoved", changedElement.event);
@@ -430,7 +430,7 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
         if( $(newValue).not(oldValue).length === 0 && $(oldValue).not(newValue).length === 0 ) {
 
         } else {
-            $scope.$emit('triggerRecalculateStoryboard');
+            $scope.$emit('triggerRecalculateStoryboard', $scope.storyboardData.minViewDate, $scope.storyboardData.maxViewDate);
         }
     };
     $scope.$watchCollection('options.storylines', onInputStoryboardStorylinesChanged);
