@@ -61,6 +61,15 @@ storyboardModule.directive('options', function() {
         if (len >0) {
             for (var i = 0; i < len; i++) {
                 var event = $scope.options.storyboardEvents[i];
+
+                if(typeof(event.startDate) == "string") {
+                    event.startDate = new Date(event.startDate);
+                }
+
+                if(typeof(event.endDate) == "string") {
+                    event.endDate = new Date(event.endDate);
+                }
+
                 event.startDate.setMinutes(0,0,0);
                 event.endDate.setMinutes(0,0,0);
 
