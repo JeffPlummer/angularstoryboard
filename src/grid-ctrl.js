@@ -120,11 +120,27 @@ angular.module('storyboard').controller('gridCtrl', function($scope, $document, 
     };
 
     var onElementResized = function(changedElement) {
+        if(typeof(changedElement.event.startDate) == "string") {
+            changedElement.event.startDate = new Date(changedElement.event.startDate);
+        }
+
+        if(typeof(changedElement.event.endDate) == "string") {
+            changedElement.event.endDate = new Date(changedElement.event.endDate);
+        }
+        
         changedElement.event.endDate = calcDateFromColumn(changedElement.col+changedElement.sizeX);
         $scope.$emit("storyboardItemResized", changedElement.event);
     };
 
     var onElementMoved = function(changedElement) {
+        if(typeof(changedElement.event.startDate) == "string") {
+            changedElement.event.startDate = new Date(changedElement.event.startDate);
+        }
+
+        if(typeof(changedElement.event.endDate) == "string") {
+            changedElement.event.endDate = new Date(changedElement.event.endDate);
+        }
+
         var numHours = changedElement.event.endDate.differenceInHours(changedElement.event.startDate);
 
         var newRow = changedElement.row;
