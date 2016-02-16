@@ -356,7 +356,7 @@ storyboardModule.directive('options', function() {
         if(typeof(changedElement.event.endDate) == "string") {
             changedElement.event.endDate = new Date(changedElement.event.endDate);
         }
-        
+
         changedElement.event.endDate = calcDateFromColumn(changedElement.col+changedElement.sizeX);
         $scope.$emit("storyboardItemResized", changedElement.event);
     };
@@ -427,6 +427,14 @@ storyboardModule.directive('options', function() {
     };
 
     var addGridItemForEvent = function(event) {
+        if(typeof(event.startDate) == "string") {
+            event.startDate = new Date(event.startDate);
+        }
+
+        if(typeof(event.endDate) == "string") {
+            event.endDate = new Date(event.endDate);
+        }
+
         var obj = {};
         obj.event = event;
         obj.sizeX = calcNumColumnsBetweenStartAndEnd(obj.event.startDate, obj.event.endDate);
